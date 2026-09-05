@@ -1,0 +1,760 @@
+{
+  "conversations": {
+    "conv_0c27880146cb": {
+      "id": "conv_0c27880146cb",
+      "user_id": "default_user",
+      "workspace_id": "Personal",
+      "title": "Explain what an LLM is.",
+      "created_at": 1788589542.3410325,
+      "updated_at": 1788589679.9990697,
+      "messages": [
+        {
+          "id": "msg_cc3164b0",
+          "role": "user",
+          "content": "Explain what an LLM is.",
+          "timestamp": 1788589588.3458357
+        },
+        {
+          "id": "msg_436874f7",
+          "role": "assistant",
+          "content": "Unable to generate a response right now. Please check your AI provider configuration in `backend/.env`.\n\n**Error Details**: OpenRouter (HTTP 401 - User not found.); Local Neural Engine (Ollama unreachable: HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=45))\n\nTo enable live AI generation, update `OPENROUTER_API_KEY`, `GROQ_API_KEY`, `OPENAI_API_KEY`, or `GEMINI_API_KEY` in `backend/.env` with your active API key.",
+          "timestamp": 1788589588.3948243,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 6,
+            "output": 112,
+            "total": 118
+          },
+          "cost": 2.3e-05,
+          "baseline_cost": 0.00171,
+          "savings": 0.001687,
+          "latency_ms": 46004.12,
+          "quality_score": 0.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto"
+        },
+        {
+          "id": "msg_0001a654",
+          "role": "user",
+          "content": "Explain it in very simple words.",
+          "timestamp": 1788589622.3448
+        },
+        {
+          "id": "msg_06247f45",
+          "role": "assistant",
+          "content": "An LLM is a type of AI model trained to understand and generate human-like text. Think of it as a smart assistant that can answer questions, write stories, or even create code. It learns from a huge amount of text data to figure out patterns and rules, so it can \"think\" and \"talk\" in a way that feels natural. But it's not perfect—it can make mistakes or misunderstand things, just like humans do!",
+          "timestamp": 1788589622.365271,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Neural Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 201,
+            "output": 307,
+            "total": 508
+          },
+          "cost": 8.2e-05,
+          "baseline_cost": 0.00561,
+          "savings": 0.005528,
+          "latency_ms": 33912.93,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto"
+        },
+        {
+          "id": "msg_d6784590",
+          "role": "user",
+          "content": "Explain it for a 5-year-old in one sentence.",
+          "timestamp": 1788589679.977478
+        },
+        {
+          "id": "msg_bcc6d6a9",
+          "role": "assistant",
+          "content": "An LLM is like a super smart friend who can talk, tell stories, and help you learn anything you ask! 🌟",
+          "timestamp": 1788589679.9990697,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Neural Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 313,
+            "output": 182,
+            "total": 495
+          },
+          "cost": 6.8e-05,
+          "baseline_cost": 0.004295,
+          "savings": 0.004227,
+          "latency_ms": 24243.41,
+          "quality_score": 95.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto"
+        }
+      ]
+    },
+    "conv_ca9ef2c87eef": {
+      "id": "conv_ca9ef2c87eef",
+      "user_id": "default_user",
+      "workspace_id": "Personal",
+      "title": "What is quantum computing?",
+      "created_at": 1788589927.6790314,
+      "updated_at": 1788590289.511698,
+      "messages": [
+        {
+          "id": "msg_ad8c555f",
+          "role": "user",
+          "content": "What is quantum computing?",
+          "timestamp": 1788589973.1804824
+        },
+        {
+          "id": "msg_36074353",
+          "role": "assistant",
+          "content": "Unable to generate a response right now. Please check your AI provider configuration in `backend/.env`.\n\n**Error Details**: OpenRouter (HTTP 401 - User not found.); Local Neural Engine (Ollama unreachable: HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=45))\n\nTo enable live AI generation, update `OPENROUTER_API_KEY`, `GROQ_API_KEY`, `OPENAI_API_KEY`, or `GEMINI_API_KEY` in `backend/.env` with your active API key.",
+          "timestamp": 1788589973.2280867,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 7,
+            "output": 112,
+            "total": 119
+          },
+          "cost": 2.3e-05,
+          "baseline_cost": 0.001715,
+          "savings": 0.001692,
+          "latency_ms": 45501.09,
+          "quality_score": 0.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto"
+        },
+        {
+          "id": "msg_e409f26c",
+          "role": "user",
+          "content": "What is quantum computing?",
+          "timestamp": 1788590289.481161
+        },
+        {
+          "id": "msg_47f95b10",
+          "role": "assistant",
+          "content": "Unable to generate a response right now. Please check your AI provider configuration in `backend/.env`.\n\n**Error Details**: OpenRouter (HTTP 401 - User not found.); Local Neural Engine (Ollama unreachable: HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=45))\n\nTo enable live AI generation, update `OPENROUTER_API_KEY`, `GROQ_API_KEY`, `OPENAI_API_KEY`, or `GEMINI_API_KEY` in `backend/.env` with your active API key.",
+          "timestamp": 1788590289.511698,
+          "model": "GPT-4 / Claude (PRO)",
+          "selected_model": "GPT-4 / Claude (POWERFUL)",
+          "provider": "Neural Engine",
+          "tier": "powerful",
+          "tokens": {
+            "input": 7,
+            "output": 112,
+            "total": 119
+          },
+          "cost": 0.001715,
+          "baseline_cost": 0.001715,
+          "savings": 0.0,
+          "latency_ms": 45747.53,
+          "quality_score": 0.0,
+          "difficulty": "hard",
+          "reason": "Direct PRO Mode override selected by user for maximum neural reasoning depth.",
+          "cache_hit": false,
+          "mode": "pro"
+        }
+      ]
+    },
+    "conv_1252f6663b1f": {
+      "id": "conv_1252f6663b1f",
+      "user_id": "usr_4633dd3b69",
+      "workspace_id": "Personal",
+      "title": "What is quantum computing?",
+      "created_at": 1788616341.5422668,
+      "updated_at": 1788616427.762394,
+      "messages": [
+        {
+          "id": "msg_e3431772",
+          "role": "user",
+          "content": "What is quantum computing?",
+          "timestamp": 1788616382.2639341
+        },
+        {
+          "id": "msg_e74efbe6",
+          "role": "assistant",
+          "content": "Quantum computing is a type of computing that uses quantum bits (qubits) instead of classical bits. Qubits leverage principles like superposition (existing as 0 and 1 simultaneously) and entanglement (correlated states) to process information in ways classical computers cannot. This allows quantum computers to solve certain problems much faster, such as optimizing complex systems, breaking encryption, or simulating molecular structures. However, current quantum computers are still limited in scalability and error tolerance, making them suitable for specific tasks rather than general-purpose computing.",
+          "timestamp": 1788616382.275816,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 52,
+            "output": 354,
+            "total": 406
+          },
+          "cost": 7.6e-05,
+          "baseline_cost": 0.00557,
+          "savings": 0.005494,
+          "latency_ms": 40731.59,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": false
+        },
+        {
+          "id": "msg_d684812c",
+          "role": "user",
+          "content": "Explain qubit superposition briefly.",
+          "timestamp": 1788616427.7372818
+        },
+        {
+          "id": "msg_cde6f187",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788616427.762394,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 9,
+            "output": 57,
+            "total": 66
+          },
+          "cost": 1.2e-05,
+          "baseline_cost": 0.0009,
+          "savings": 0.000888,
+          "latency_ms": 45438.71,
+          "quality_score": 99.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true
+        }
+      ]
+    },
+    "conv_d3a583dfc560": {
+      "id": "conv_d3a583dfc560",
+      "user_id": "usr_4633dd3b69",
+      "workspace_id": "Personal",
+      "title": "What is quantum computing?",
+      "created_at": 1788616860.6773868,
+      "updated_at": 1788616860.7442403,
+      "messages": [
+        {
+          "id": "msg_462a16db",
+          "role": "user",
+          "content": "What is quantum computing?",
+          "timestamp": 1788616860.7177255
+        },
+        {
+          "id": "msg_ee5ee454",
+          "role": "assistant",
+          "content": "Quantum computing is a type of computing that uses quantum bits (qubits) instead of classical bits. Qubits leverage principles like superposition (existing as 0 and 1 simultaneously) and entanglement (correlated states) to process information in ways classical computers cannot. This allows quantum computers to solve certain problems much faster, such as optimizing complex systems, breaking encryption, or simulating molecular structures. However, current quantum computers are still limited in scalability and error tolerance, making them suitable for specific tasks rather than general-purpose computing.",
+          "timestamp": 1788616860.7442403,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "NEXORA Cache",
+          "tier": "cheap",
+          "tokens": {
+            "input": 7,
+            "output": 152,
+            "total": 159
+          },
+          "cost": 0.0,
+          "baseline_cost": 0.002315,
+          "savings": 0.002315,
+          "latency_ms": 40.44,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": true,
+          "mode": "auto",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_d3aeeb9846a7": {
+      "id": "conv_d3aeeb9846a7",
+      "user_id": "usr_4633dd3b69",
+      "workspace_id": "Personal",
+      "title": "What is quantum computing?",
+      "created_at": 1788624292.6876998,
+      "updated_at": 1788625621.7251108,
+      "messages": [
+        {
+          "id": "msg_27e85886",
+          "role": "user",
+          "content": "What is quantum computing?",
+          "timestamp": 1788624338.6044784
+        },
+        {
+          "id": "msg_df5cbf9b",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788624338.6323829,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 7,
+            "output": 57,
+            "total": 64
+          },
+          "cost": 1.2e-05,
+          "baseline_cost": 0.00089,
+          "savings": 0.000878,
+          "latency_ms": 45916.32,
+          "quality_score": 99.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true
+        },
+        {
+          "id": "msg_b07dc03f",
+          "role": "user",
+          "content": "Explain neural network routing in one sentence.",
+          "timestamp": 1788625621.6915317
+        },
+        {
+          "id": "msg_7b847eb5",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788625621.7251108,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 12,
+            "output": 57,
+            "total": 69
+          },
+          "cost": 1.3e-05,
+          "baseline_cost": 0.000915,
+          "savings": 0.000902,
+          "latency_ms": 45724.37,
+          "quality_score": 99.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true
+        }
+      ]
+    },
+    "conv_860b5255ae70": {
+      "id": "conv_860b5255ae70",
+      "user_id": "usr_38a435383d",
+      "workspace_id": "Personal",
+      "title": "What is Nexora?",
+      "created_at": 1788624867.8135905,
+      "updated_at": 1788624899.844384,
+      "messages": [
+        {
+          "id": "msg_a48d5822",
+          "role": "user",
+          "content": "What is Nexora?",
+          "timestamp": 1788624899.831075
+        },
+        {
+          "id": "msg_0d19c7d7",
+          "role": "assistant",
+          "content": "Nexora is an AI optimization assistant designed to help users improve efficiency, make data-driven decisions, and streamline processes across business, personal, and technical domains. It leverages machine learning to analyze trends, provide insights, and offer actionable recommendations for optimization. Whether enhancing workflows, improving productivity, or solving complex problems, Nexora aims to simplify challenges and drive results.",
+          "timestamp": 1788624899.844384,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 52,
+            "output": 303,
+            "total": 355
+          },
+          "cost": 6.6e-05,
+          "baseline_cost": 0.004805,
+          "savings": 0.004739,
+          "latency_ms": 32017.18,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_a4a83c108c27": {
+      "id": "conv_a4a83c108c27",
+      "user_id": "usr_38a435383d",
+      "workspace_id": "Personal",
+      "title": "Hello Nexora, remember my favorite col...",
+      "created_at": 1788627149.9778693,
+      "updated_at": 1788627202.9387515,
+      "messages": [
+        {
+          "id": "msg_a60ecc2e",
+          "role": "user",
+          "content": "Hello Nexora, remember my favorite color is Blue.",
+          "timestamp": 1788627178.9914355
+        },
+        {
+          "id": "msg_5d0ea950",
+          "role": "assistant",
+          "content": "Hello! I love blue too—its calming energy and vibrant depth make it a perfect companion to any space. Let’s explore how blue can inspire creativity, from art to technology! 🌉✨ What would you like to create or discuss next?",
+          "timestamp": 1788627179.0168202,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 58,
+            "output": 182,
+            "total": 240
+          },
+          "cost": 4.2e-05,
+          "baseline_cost": 0.00302,
+          "savings": 0.002978,
+          "latency_ms": 29012.36,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": false,
+          "mode": "fast",
+          "is_configuration_error": false
+        },
+        {
+          "id": "msg_a707450f",
+          "role": "user",
+          "content": "What is my favorite color?",
+          "timestamp": 1788627202.907772
+        },
+        {
+          "id": "msg_c78bf5fb",
+          "role": "assistant",
+          "content": "Your favorite color is Blue! It's a vibrant and calming choice that adds depth to any space. Would you like to explore how blue can inspire creativity, design, or technology? 🌈✨",
+          "timestamp": 1788627202.9387515,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 124,
+            "output": 167,
+            "total": 291
+          },
+          "cost": 4.6e-05,
+          "baseline_cost": 0.003125,
+          "savings": 0.003079,
+          "latency_ms": 23854.21,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": false,
+          "mode": "fast",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_d6d7a9dd1eca": {
+      "id": "conv_d6d7a9dd1eca",
+      "user_id": "usr_38a435383d",
+      "workspace_id": "Personal",
+      "title": "Hello Nexora, remember my favorite col...",
+      "created_at": 1788627201.1305711,
+      "updated_at": 1788627235.1364539,
+      "messages": [
+        {
+          "id": "msg_60880928",
+          "role": "user",
+          "content": "Hello Nexora, remember my favorite color is Blue.",
+          "timestamp": 1788627201.1727984
+        },
+        {
+          "id": "msg_4e73a079",
+          "role": "assistant",
+          "content": "Hello! I love blue too—its calming energy and vibrant depth make it a perfect companion to any space. Let’s explore how blue can inspire creativity, from art to technology! 🌉✨ What would you like to create or discuss next?",
+          "timestamp": 1788627201.209892,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "NEXORA Cache",
+          "tier": "cheap",
+          "tokens": {
+            "input": 13,
+            "output": 56,
+            "total": 69
+          },
+          "cost": 0.0,
+          "baseline_cost": 0.000905,
+          "savings": 0.000905,
+          "latency_ms": 41.71,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": true,
+          "mode": "fast",
+          "is_configuration_error": false
+        },
+        {
+          "id": "msg_0a1db407",
+          "role": "user",
+          "content": "What is my favorite color?",
+          "timestamp": 1788627235.1126373
+        },
+        {
+          "id": "msg_75920553",
+          "role": "assistant",
+          "content": "Your favorite color is blue! It's a vibrant and calming hue that adds depth and vitality to any space. Let’s explore how blue can inspire creativity, from art to technology! 🌿✨ What would you like to discuss next?",
+          "timestamp": 1788627235.1364539,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 124,
+            "output": 269,
+            "total": 393
+          },
+          "cost": 6.6e-05,
+          "baseline_cost": 0.004655,
+          "savings": 0.004589,
+          "latency_ms": 33857.98,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": false,
+          "mode": "fast",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_5e3ac136a260": {
+      "id": "conv_5e3ac136a260",
+      "user_id": "usr_38a435383d",
+      "workspace_id": "Personal",
+      "title": "Hello Nexora, remember my favorite col...",
+      "created_at": 1788627475.677404,
+      "updated_at": 1788627513.7757115,
+      "messages": [
+        {
+          "id": "msg_68692b8d",
+          "role": "user",
+          "content": "Hello Nexora, remember my favorite color is Blue.",
+          "timestamp": 1788627475.7076979
+        },
+        {
+          "id": "msg_5d528025",
+          "role": "assistant",
+          "content": "Hello! I love blue too—its calming energy and vibrant depth make it a perfect companion to any space. Let’s explore how blue can inspire creativity, from art to technology! 🌉✨ What would you like to create or discuss next?",
+          "timestamp": 1788627475.7291105,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "NEXORA Cache",
+          "tier": "cheap",
+          "tokens": {
+            "input": 13,
+            "output": 56,
+            "total": 69
+          },
+          "cost": 0.0,
+          "baseline_cost": 0.000905,
+          "savings": 0.000905,
+          "latency_ms": 31.01,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": true,
+          "mode": "fast",
+          "is_configuration_error": false
+        },
+        {
+          "id": "msg_5803a33f",
+          "role": "user",
+          "content": "What is my favorite color?",
+          "timestamp": 1788627513.74897
+        },
+        {
+          "id": "msg_805cb359",
+          "role": "assistant",
+          "content": "Your favorite color is Blue! It’s often associated with calmness, creativity, and depth. In nature, blue skies and oceans inspire tranquility, while in art and design, it adds a vibrant contrast. Let me know if you’d like to explore blue further—whether in art, technology, or everyday creativity! 🌈✨",
+          "timestamp": 1788627513.7757115,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 124,
+            "output": 292,
+            "total": 416
+          },
+          "cost": 7.1e-05,
+          "baseline_cost": 0.005,
+          "savings": 0.004929,
+          "latency_ms": 37984.91,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": false,
+          "mode": "fast",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_4c02cdbc76b6": {
+      "id": "conv_4c02cdbc76b6",
+      "user_id": "usr_38a435383d",
+      "workspace_id": "Personal",
+      "title": "Hello Nexora, remember my favorite col...",
+      "created_at": 1788628100.2907882,
+      "updated_at": 1788628146.7511814,
+      "messages": [
+        {
+          "id": "msg_26fc647b",
+          "role": "user",
+          "content": "Hello Nexora, remember my favorite color is Blue.",
+          "timestamp": 1788628100.31798
+        },
+        {
+          "id": "msg_c8359eef",
+          "role": "assistant",
+          "content": "Hello! I love blue too—its calming energy and vibrant depth make it a perfect companion to any space. Let’s explore how blue can inspire creativity, from art to technology! 🌉✨ What would you like to create or discuss next?",
+          "timestamp": 1788628100.3420498,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "NEXORA Cache",
+          "tier": "cheap",
+          "tokens": {
+            "input": 13,
+            "output": 56,
+            "total": 69
+          },
+          "cost": 0.0,
+          "baseline_cost": 0.000905,
+          "savings": 0.000905,
+          "latency_ms": 28.05,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": true,
+          "mode": "fast",
+          "is_configuration_error": false
+        },
+        {
+          "id": "msg_cb862576",
+          "role": "user",
+          "content": "What is my favorite color?",
+          "timestamp": 1788628146.714979
+        },
+        {
+          "id": "msg_3eb976df",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788628146.7511814,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 7,
+            "output": 57,
+            "total": 64
+          },
+          "cost": 1.2e-05,
+          "baseline_cost": 0.00089,
+          "savings": 0.000878,
+          "latency_ms": 46339.28,
+          "quality_score": 99.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": false,
+          "mode": "fast",
+          "is_configuration_error": true
+        }
+      ]
+    },
+    "conv_d59174b33a85": {
+      "id": "conv_d59174b33a85",
+      "user_id": "usr_38a435383d",
+      "workspace_id": "Personal",
+      "title": "Hello Nexora, remember my favorite col...",
+      "created_at": 1788628438.2419176,
+      "updated_at": 1788628474.4414046,
+      "messages": [
+        {
+          "id": "msg_4913b7dc",
+          "role": "user",
+          "content": "Hello Nexora, remember my favorite color is Blue.",
+          "timestamp": 1788628438.2697787
+        },
+        {
+          "id": "msg_2a822124",
+          "role": "assistant",
+          "content": "Hello! I love blue too—its calming energy and vibrant depth make it a perfect companion to any space. Let’s explore how blue can inspire creativity, from art to technology! 🌉✨ What would you like to create or discuss next?",
+          "timestamp": 1788628438.2967114,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "NEXORA Cache",
+          "tier": "cheap",
+          "tokens": {
+            "input": 13,
+            "output": 56,
+            "total": 69
+          },
+          "cost": 0.0,
+          "baseline_cost": 0.000905,
+          "savings": 0.000905,
+          "latency_ms": 28.7,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": true,
+          "mode": "fast",
+          "is_configuration_error": false
+        },
+        {
+          "id": "msg_f3472323",
+          "role": "user",
+          "content": "What is my favorite color?",
+          "timestamp": 1788628474.4116168
+        },
+        {
+          "id": "msg_a5c0bd98",
+          "role": "assistant",
+          "content": "Your favorite color is Blue! It's a vibrant and calming hue that brings warmth and depth to any space. Let’s explore how blue inspires creativity, from art to technology! 🌈 What would you like to discuss next?",
+          "timestamp": 1788628474.4414046,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 124,
+            "output": 272,
+            "total": 396
+          },
+          "cost": 6.7e-05,
+          "baseline_cost": 0.0047,
+          "savings": 0.004633,
+          "latency_ms": 36078.15,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Direct FAST Mode override selected by user for minimal latency and cost.",
+          "cache_hit": false,
+          "mode": "fast",
+          "is_configuration_error": false
+        }
+      ]
+    }
+  }
+}

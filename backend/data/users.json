@@ -1,0 +1,68 @@
+{
+  "users": {
+    "usr_4633dd3b69": {
+      "id": "usr_4633dd3b69",
+      "email": "mounika@gmail.com",
+      "name": "Mounika",
+      "first_name": "Mounika",
+      "picture": "",
+      "provider": "email",
+      "plan": "Free Plan",
+      "created_at": 1788616341.500366,
+      "last_login": 1788616753.5015583,
+      "preferences": {
+        "default_workspace": "Personal",
+        "theme": "light",
+        "default_mode": "auto"
+      }
+    },
+    "usr_38a435383d": {
+      "id": "usr_38a435383d",
+      "email": "charan@gmail.com",
+      "name": "Charan Teja",
+      "first_name": "Charan",
+      "picture": "",
+      "provider": "email",
+      "plan": "Free Plan",
+      "created_at": 1788624867.7981527,
+      "last_login": 1788628438.2072973,
+      "preferences": {
+        "default_workspace": "Personal",
+        "theme": "light",
+        "default_mode": "auto"
+      }
+    },
+    "usr_ad8a356f03": {
+      "id": "usr_ad8a356f03",
+      "email": "rahul.sharma@gmail.com",
+      "name": "Rahul Sharma",
+      "first_name": "Rahul",
+      "picture": "",
+      "provider": "email",
+      "plan": "Free Plan",
+      "created_at": 1788627202.9957902,
+      "last_login": 1788628474.49229,
+      "preferences": {
+        "default_workspace": "Personal",
+        "theme": "light",
+        "default_mode": "auto"
+      }
+    },
+    "usr_7d91933564": {
+      "id": "usr_7d91933564",
+      "email": "mounikapeturnallapalli70@gmail.com",
+      "name": "Mounikapeturnallapalli",
+      "first_name": "Mounikapeturnallapalli",
+      "picture": "",
+      "provider": "email",
+      "plan": "Free Plan",
+      "created_at": 1788627203.0319386,
+      "last_login": 1788628474.520809,
+      "preferences": {
+        "default_workspace": "Personal",
+        "theme": "light",
+        "default_mode": "auto"
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "q1",
+    "difficulty": "easy",
+    "query": "What is the capital of France?",
+    "category": "General Knowledge"
+  },
+  {
+    "id": "q2",
+    "difficulty": "easy",
+    "query": "Translate 'Good morning' to Spanish.",
+    "category": "Language"
+  },
+  {
+    "id": "q3",
+    "difficulty": "easy",
+    "query": "Who wrote the play Romeo and Juliet?",
+    "category": "Literature"
+  },
+  {
+    "id": "q4",
+    "difficulty": "easy",
+    "query": "What is 15 * 12?",
+    "category": "Arithmetic"
+  },
+  {
+    "id": "q5",
+    "difficulty": "medium",
+    "query": "Write a Python function to check if a string is a palindrome.",
+    "category": "Coding"
+  },
+  {
+    "id": "q6",
+    "difficulty": "medium",
+    "query": "Implement binary search in Python and explain its time complexity.",
+    "category": "Algorithms"
+  },
+  {
+    "id": "q7",
+    "difficulty": "medium",
+    "query": "Explain how database indexing works with an example.",
+    "category": "Databases"
+  },
+  {
+    "id": "q8",
+    "difficulty": "hard",
+    "query": "Design an architecture for a distributed rate limiter handling 100k requests per second across multiple regions.",
+    "category": "System Design"
+  },
+  {
+    "id": "q9",
+    "difficulty": "hard",
+    "query": "Provide a mathematical proof for why the square root of 2 is irrational.",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q10",
+    "difficulty": "hard",
+    "query": "Deep analysis: Compare Raft vs Paxos consensus algorithms in detail with failure mode tradeoffs.",
+    "category": "Distributed Systems"
+  }
+]

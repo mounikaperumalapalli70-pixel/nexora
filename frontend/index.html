@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXORA | AI Optimization Engine</title>
+  <meta name="description" content="NEXORA - One question. Smarter answers. Lower cost. Production-grade intelligent LLM cost optimization and model routing.">
+  
+  <!-- Modern Typography: Plus Jakarta Sans, Caveat (for cursive signature), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon: Stylized Nexora N Logo -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='n1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%237C3AED'/%3E%3Cstop offset='100%25' stop-color='%239333EA'/%3E%3C/linearGradient%3E%3ClinearGradient id='n2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%239333EA'/%3E%3Cstop offset='60%25' stop-color='%23EC4899'/%3E%3Cstop offset='100%25' stop-color='%23F97316'/%3E%3C/linearGradient%3E%3ClinearGradient id='n3' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23F97316'/%3E%3Cstop offset='100%25' stop-color='%23EC4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M10 38V14C10 11.2 12.2 9 15 9H15.5C18.2 9 20.5 11.2 20.5 14V38C20.5 40.8 18.2 43 15.5 43H15C12.2 43 10 40.8 10 38Z' fill='url(%23n1)'/%3E%3Cpath d='M12 12C12 9.5 14.5 8 16.8 9.2L34.2 20.8C36.5 22.3 36.5 25.7 34.2 27.2L16.8 38.8C14.5 40 12 38.5 12 36L12 12Z' fill='url(%23n2)'/%3E%3Cpath d='M28.5 10V34C28.5 36.8 30.7 39 33.5 39H34C36.8 39 39 36.8 39 34V10C39 7.2 36.8 5 34 5H33.5C30.7 5 28.5 7.2 28.5 10Z' fill='url(%23n3)'/%3E%3C/svg%3E">
+
+  <!-- Three.js for 3D Orbital & Routing Core Visualization -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Google Identity Services (GIS) Library -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="nexora-light-theme">
+
+  <!-- ============================================================
+       SCREEN 1: GOOGLE / EMAIL SIGN IN (AUTHENTICATION FIRST)
+       ============================================================ -->
+  <div id="authScreen" class="auth-full-screen-wrapper">
+    <div class="auth-backdrop-ambient"></div>
+
+    <div class="auth-card-clean">
+      <!-- Cursive Signature Quote Top Right -->
+      <div class="auth-top-signature">
+        <span class="cursive-text">"Smarter AI for a brighter tomorrow."</span>
+      </div>
+
+      <!-- Unified Nexora Brand Header -->
+      <div class="auth-brand-center">
+        <div class="nexora-brand-logo-icon">
+          <svg class="nexora-brand-logo-svg" viewBox="0 0 48 48" fill="none">
+            <defs>
+              <linearGradient id="authN1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7C3AED"/>
+                <stop offset="100%" stop-color="#9333EA"/>
+              </linearGradient>
+              <linearGradient id="authN2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#9333EA"/>
+                <stop offset="60%" stop-color="#EC4899"/>
+                <stop offset="100%" stop-color="#F97316"/>
+              </linearGradient>
+              <linearGradient id="authN3" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#F97316"/>
+                <stop offset="100%" stop-color="#EC4899"/>
+              </linearGradient>
+            </defs>
+            <path d="M10 38V14C10 11.2386 12.2386 9 15 9H15.5C18.2614 9 20.5 11.2386 20.5 14V38C20.5 40.7614 18.2614 43 15.5 43H15C12.2386 43 10 40.7614 10 38Z" fill="url(#authN1)"/>
+            <path d="M12 12C12 9.5 14.5 8 16.8 9.2L34.2 20.8C36.5 22.3 36.5 25.7 34.2 27.2L16.8 38.8C14.5 40 12 38.5 12 36L12 12Z" fill="url(#authN2)"/>
+            <path d="M28.5 10V34C28.5 36.7614 30.7386 39 33.5 39H34C36.7614 39 39 36.7614 39 34V10C39 7.23858 36.7614 5 34 5H33.5C30.7386 5 28.5 7.23858 28.5 10Z" fill="url(#authN3)"/>
+          </svg>
+        </div>
+        <div class="auth-brand-text">
+          <h1 class="brand-title-large">NEXOR<span class="brand-title-accent">A</span></h1>
+          <p class="brand-subtitle-text">AI Optimization Engine</p>
+        </div>
+      </div>
+
+      <!-- 3D Glowing Sphere Visual with Floating Logo & Orbital Rings -->
+      <div class="auth-3d-visual-container">
+        <canvas id="auth3dCanvas" class="auth-canvas-orb"></canvas>
+        <div class="auth-sphere-floating-badge">
+          <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+            <path d="M10 38V14C10 11.2 12.2 9 15 9H15.5C18.2 9 20.5 11.2 20.5 14V38C20.5 40.8 18.2 43 15.5 43H15C12.2 43 10 40.8 10 38Z" fill="url(#authN1)"/>
+            <path d="M12 12C12 9.5 14.5 8 16.8 9.2L34.2 20.8C36.5 22.3 36.5 25.7 34.2 27.2L16.8 38.8C14.5 40 12 38.5 12 36L12 12Z" fill="url(#authN2)"/>
+            <path d="M28.5 10V34C28.5 36.8 30.7 39 33.5 39H34C36.8 39 39 36.8 39 34V10C39 7.2 36.8 5 34 5H33.5C30.7 5 28.5 7.2 28.5 10Z" fill="url(#authN3)"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Welcome Headline -->
+      <div class="auth-headlines-wrap">
+        <h2 class="auth-main-headline">Welcome to <span class="text-purple-gradient">Nexora</span></h2>
+        <p class="auth-sub-headline">One question. Smarter answers. Lower cost.</p>
+      </div>
+
+      <!-- Authentication Action Buttons -->
+      <div class="auth-actions-group">
+        <!-- 1. Continue with Google -->
+        <a href="/auth/google/login" id="btnGoogleSignIn" class="btn-auth-provider btn-google-auth">
+          <div class="auth-provider-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div class="auth-provider-text">
+            <span class="auth-btn-primary-title">Continue with Google</span>
+            <span class="auth-btn-sub-title">Sign in with your Google account</span>
+          </div>
+        </a>
+
+        <!-- Google One-Tap Slot (Hidden container for GIS auto-prompt) -->
+        <div id="g_id_onload"
+             data-client_id=""
+             data-callback="handleGoogleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+
+        <!-- Divider -->
+        <div class="auth-or-divider">
+          <span>or</span>
+        </div>
+
+        <!-- 2. Continue with Email Toggle / Button -->
+        <button type="button" id="btnEmailSignInToggle" class="btn-auth-provider btn-email-auth">
+          <div class="auth-provider-icon mail-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="auth-provider-text">
+            <span class="auth-btn-primary-title">Continue with Email</span>
+            <span class="auth-btn-sub-title">Use your email to sign in</span>
+          </div>
+        </button>
+
+        <!-- Functional Inline Email Form -->
+        <form id="emailLoginForm" class="auth-email-expandable-form hidden">
+          <div class="auth-input-wrapper">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-lead-icon">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input type="email" id="emailAuthInput" class="auth-input-clean" placeholder="name@example.com" required>
+          </div>
+          <div class="auth-input-wrapper" style="margin-top: 0.6rem;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-lead-icon">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <input type="text" id="nameAuthInput" class="auth-input-clean" placeholder="Display Name (optional)">
+          </div>
+
+          <button type="submit" class="btn-primary-gradient btn-block" id="btnSubmitEmailAuth" style="margin-top: 0.85rem;">
+            <span>Sign In to Nexora</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Legal Footnote -->
+      <p class="auth-terms-note">
+        By continuing, you agree to our <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>.
+      </p>
+
+      <!-- 3 Value Points Row at Bottom -->
+      <div class="auth-value-props-row">
+        <div class="auth-val-prop">
+          <div class="val-prop-icon bg-soft-green">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="text-green">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <div class="val-prop-text">
+            <strong>Lower Costs</strong>
+            <span>Spend only what you need</span>
+          </div>
+        </div>
+
+        <div class="auth-val-prop">
+          <div class="val-prop-icon bg-soft-purple">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-purple">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div class="val-prop-text">
+            <strong>Smarter Routing</strong>
+            <span>Best model, every time</span>
+          </div>
+        </div>
+
+        <div class="auth-val-prop">
+          <div class="val-prop-icon bg-soft-orange">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="text-orange">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
+          <div class="val-prop-text">
+            <strong>Better Results</strong>
+            <span>More intelligence, less waste</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="auth-footer-tag">Trusted by creators, learners and innovators.</p>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SCREEN 2: AUTHENTICATING / LOADING SCREEN
+       ============================================================ -->
+  <div id="authLoadingScreen" class="auth-loading-full-wrapper hidden">
+    <div class="auth-loading-card">
+      <!-- Centered Nexora Brand Header -->
+      <div class="auth-brand-center">
+        <div class="nexora-brand-logo-icon">
+          <svg class="nexora-brand-logo-svg" viewBox="0 0 48 48" fill="none">
+            <path d="M10 38V14C10 11.2 12.2 9 15 9H15.5C18.2 9 20.5 11.2 20.5 14V38C20.5 40.8 18.2 43 15.5 43H15C12.2 43 10 40.8 10 38Z" fill="url(#authN1)"/>
+            <path d="M12 12C12 9.5 14.5 8 16.8 9.2L34.2 20.8C36.5 22.3 36.5 25.7 34.2 27.2L16.8 38.8C14.5 40 12 38.5 12 36L12 12Z" fill="url(#authN2)"/>
+            <path d="M28.5 10V34C28.5 36.8 30.7 39 33.5 39H34C36.8 39 39 36.8 39 34V10C39 7.2 36.8 5 34 5H33.5C30.7 5 28.5 7.2 28.5 10Z" fill="url(#authN3)"/>
+          </svg>
+        </div>
+        <div class="auth-brand-text">
+          <h1 class="brand-title-large">NEXOR<span class="brand-title-accent">A</span></h1>
+          <p class="brand-subtitle-text">AI Optimization Engine</p>
+        </div>
+      </div>
+
+      <!-- Provider Icon Circle (Google / Email) -->
+      <div class="auth-loading-provider-badge">
+        <div id="loadingProviderIconGoogle" class="provider-icon-circle">
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+        </div>
+      </div>
+
+      <h3 class="auth-loading-title">Signing you in...</h3>
+      <p class="auth-loading-subtitle">Please wait while we set up your Nexora workspace.</p>
+
+      <!-- Circular Animated Gradient Loader -->
+      <div class="auth-spinner-ring-wrap">
+        <div class="animated-gradient-spinner"></div>
+      </div>
+
+      <!-- Checklist of Real Setup Steps -->
+      <div class="auth-loading-checklist" id="authChecklist">
+        <div class="check-step-row" id="checkStep1">
+          <div class="check-badge active">✓</div>
+          <span class="check-label">Connecting to Google</span>
+        </div>
+        <div class="check-step-row" id="checkStep2">
+          <div class="check-badge">✓</div>
+          <span class="check-label">Verifying account</span>
+        </div>
+        <div class="check-step-row" id="checkStep3">
+          <div class="check-badge">✓</div>
+          <span class="check-label">Fetching your profile</span>
+        </div>
+        <div class="check-step-row" id="checkStep4">
+          <div class="check-badge">✓</div>
+          <span class="check-label">Setting up your workspace</span>
+        </div>
+        <div class="check-step-row" id="checkStep5">
+          <div class="check-badge">✓</div>
+          <span class="check-label">Loading conversations</span>
+        </div>
+        <div class="check-step-row" id="checkStep6">
+          <div class="check-badge">✓</div>
+          <span class="check-label">Almost there...</span>
+        </div>
+      </div>
+
+      <!-- Bottom Floating Cursive Signature -->
+      <div class="loading-bottom-signature">
+        <span class="cursive-text">"Smarter AI for a brighter tomorrow."</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SCREEN 3: NEXORA DASHBOARD (AFTER AUTHENTICATION)
+       ============================================================ -->
+  <div id="dashboardScreen" class="nexora-app-layout hidden">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="app-sidebar" id="sidebarLeft">
+      <!-- Sidebar Top Brand Header -->
+      <div class="sidebar-top">
+        <div class="sidebar-brand-group">
+          <div class="nexora-brand-logo-icon">
+            <svg class="nexora-brand-logo-svg" viewBox="0 0 48 48" fill="none">
+              <path d="M10 38V14C10 11.2 12.2 9 15 9H15.5C18.2 9 20.5 11.2 20.5 14V38C20.5 40.8 18.2 43 15.5 43H15C12.2 43 10 40.8 10 38Z" fill="url(#authN1)"/>
+              <path d="M12 12C12 9.5 14.5 8 16.8 9.2L34.2 20.8C36.5 22.3 36.5 25.7 34.2 27.2L16.8 38.8C14.5 40 12 38.5 12 36L12 12Z" fill="url(#authN2)"/>
+              <path d="M28.5 10V34C28.5 36.8 30.7 39 33.5 39H34C36.8 39 39 36.8 39 34V10C39 7.2 36.8 5 34 5H33.5C30.7 5 28.5 7.2 28.5 10Z" fill="url(#authN3)"/>
+            </svg>
+          </div>
+          <div class="brand-text-block">
+            <div class="brand-title">NEXOR<span class="brand-title-accent">A</span></div>
+            <div class="brand-subtitle">AI Optimization Engine</div>
+          </div>
+        </div>
+        <button class="btn-sidebar-collapse" title="Collapse sidebar" id="btnCollapseSidebar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="11 17 6 12 11 7"></polyline>
+            <polyline points="18 17 13 12 18 7"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="sidebar-nav-menu">
+        <button class="nav-btn active" data-tab="home" id="navHome">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+          </div>
+          <span class="nav-btn-label">Home</span>
+        </button>
+
+        <button class="nav-btn" data-tab="explore" id="navExplore">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+          </div>
+          <span class="nav-btn-label">Explore</span>
+        </button>
+
+        <button class="nav-btn" data-tab="impact" id="navImpact">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <span class="nav-btn-label">Impact</span>
+          <span class="nav-badge-new">New</span>
+        </button>
+
+        <button class="nav-btn" data-tab="prompts" id="navPromptLib">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <span class="nav-btn-label">Prompt Library</span>
+        </button>
+
+        <button class="nav-btn" data-tab="routing-core" id="navRoutingCore">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <span class="nav-btn-label">3D Routing Core</span>
+        </button>
+
+        <button class="nav-btn" data-tab="analytics" id="navAnalyticsSidebar">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
+          <span class="nav-btn-label">Usage & Analytics</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Divider -->
+      <div class="sidebar-divider-line"></div>
+
+      <!-- Workspaces Section -->
+      <div class="sidebar-section-workspaces">
+        <div class="workspaces-header">
+          <div class="ws-header-left">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Workspaces</span>
+          </div>
+          <button class="btn-add-ws-circle" id="createWorkspaceBtn" title="Create Workspace">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="workspace-items-list" id="workspaceList">
+          <!-- Dynamically populated: Personal, College, Research, Hackathons -->
+        </div>
+      </div>
+
+      <!-- Sidebar Divider -->
+      <div class="sidebar-divider-line"></div>
+
+      <!-- Secondary Links (Settings, Help & History) -->
+      <div class="sidebar-secondary-menu">
+        <button class="nav-btn" id="btnOpenSettings">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <span class="nav-btn-label">Settings</span>
+        </button>
+
+        <button class="nav-btn" id="btnOpenHelp">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <span class="nav-btn-label">Help & Support</span>
+        </button>
+
+        <button class="nav-btn" id="btnOpenHistory">
+          <div class="nav-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <span class="nav-btn-label">History Drawer</span>
+        </button>
+      </div>
+
+      <!-- Upgrade to Pro Card -->
+      <div class="sidebar-pro-card" id="upgradeProCard">
+        <div class="pro-card-header">
+          <div class="pro-crown-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+            </svg>
+          </div>
+          <span class="pro-card-title">Upgrade to Pro</span>
+        </div>
+        <p class="pro-card-desc">Higher limits, advanced models and team workspaces.</p>
+        <button class="btn-upgrade-pro" id="btnUpgradePro">
+          <span>Upgrade Now</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- User Profile (Bottom) -->
+      <div class="sidebar-user-footer" id="userProfileBtn">
+        <div class="user-avatar-circle" id="userAvatarContainer">
+          <img id="userAvatarImg" class="user-avatar-img hidden" alt="Profile">
+          <span class="user-avatar-initial" id="userAvatarInitial">M</span>
+        </div>
+        <div class="user-info-text">
+          <div class="user-name" id="userNameDisplay">Mounika</div>
+          <div class="user-email-badge" id="userEmailDisplay">mounika@gmail.com</div>
+        </div>
+        <div class="user-more-dots" id="userProfileMenuDots">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </div>
+      </div>
+    </aside>
+
+
+    <!-- MAIN CONTENT VIEWPORT -->
+    <main class="app-main-viewport">
+
+      <!-- TOP SEARCH BAR (LONG CHATGPT/GEMINI-STYLE BAR SPANNING WIDTH) -->
+      <header class="app-top-header" id="topHeader">
+        <div class="top-search-container">
+          <div class="search-icon-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="globalSearchInput" 
+            class="top-search-input" 
+            placeholder="Search anything... prompts, features, workflows, or ask a question"
+          >
+          <div class="search-ctrl-k">Ctrl K</div>
+        </div>
+
+        <div class="top-header-right">
+          <!-- Theme Toggle -->
+          <button class="top-icon-btn" id="btnToggleTheme" title="Toggle Light/Dark Theme">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Notifications -->
+          <button class="top-icon-btn relative-btn" id="btnNotifications" title="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notification-badge-dot">1</span>
+          </button>
+
+          <!-- Routing Engine Active Live Status Pill -->
+          <div class="top-status-pill" id="topRoutingStatusPill">
+            <span class="status-dot-green"></span>
+            <span class="status-pill-text" id="topRoutingStatusText">Routing Engine Active</span>
+          </div>
+
+          <!-- User Circle Icon -->
+          <div class="top-user-avatar" id="topProfileBtn" title="Account Settings">
+            <span id="topAvatarLetter">M</span>
+          </div>
+        </div>
+      </header>
+
+
+      <!-- VIEWS SCROLL CONTAINER -->
+      <div class="views-scroll-container">
+
+        <!-- ==========================================
+             VIEW 1: HOME (EXACT MATCH TO SCREENSHOT 3)
+             ========================================== -->
+        <section id="viewHome" class="tab-view active">
+          <div class="home-page-content">
+
+            <!-- HERO SECTION: DYNAMIC GREETING + 3D ORBITAL ART -->
+            <div class="home-hero-section">
+              <div class="hero-left-col">
+                <h1 class="hero-greeting-title">
+                  Good to see you again,<br>
+                  <span class="hero-name-gradient" id="heroUserName">Mounika!</span>
+                </h1>
+                <p class="hero-sub-text" id="workspaceHeaderTitle">One question. Smarter answers. Lower cost.</p>
+                
+                <!-- Conversation Continuation Indicator -->
+                <div id="activeConvHeaderPill" class="active-conv-pill hidden">
+                  <span class="conv-pill-label">Continuing conversation:</span>
+                  <span id="activeConvTitleDisplay" class="conv-pill-title">What is quantum computing?</span>
+                  <button type="button" id="btnNewChatInline" class="btn-new-chat-inline" title="Start New Conversation">+ New Chat</button>
+                </div>
+              </div>
+
+              <!-- 3D ORBITAL VISUAL ON RIGHT -->
+              <div class="hero-right-col">
+                <div class="orbital-sphere-visual-wrap">
+                  <div class="sphere-glowing-backdrop"></div>
+                  <canvas id="hero3dCanvas" class="hero-3d-sphere-canvas"></canvas>
+
+                  <div class="sphere-center-badge">
+                    <svg width="34" height="34" viewBox="0 0 48 48" fill="none">
+                      <path d="M10 38V14C10 11.2 12.2 9 15 9H15.5C18.2 9 20.5 11.2 20.5 14V38C20.5 40.8 18.2 43 15.5 43H15C12.2 43 10 40.8 10 38Z" fill="url(#authN1)"/>
+                      <path d="M12 12C12 9.5 14.5 8 16.8 9.2L34.2 20.8C36.5 22.3 36.5 25.7 34.2 27.2L16.8 38.8C14.5 40 12 38.5 12 36L12 12Z" fill="url(#authN2)"/>
+                      <path d="M28.5 10V34C28.5 36.8 30.7 39 33.5 39H34C36.8 39 39 36.8 39 34V10C39 7.2 36.8 5 34 5H33.5C30.7 5 28.5 7.2 28.5 10Z" fill="url(#authN3)"/>
+                    </svg>
+                  </div>
+
+                  <div class="floating-cursive-quote">
+                    <span class="cursive-text">"Smarter AI for a brighter tomorrow."</span>
+                    <div class="quote-underline-swoosh"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- CHAT COMPOSER: WIDE INPUT CARD WITH IN-COMPOSER ROUTER CONTROLS -->
+            <div class="chat-composer-container">
+              <form id="mainChatForm" class="composer-card">
+                <!-- Hidden Attachment Input -->
+                <input type="file" id="fileAttachmentInput" class="hidden" accept=".txt,.pdf,.doc,.docx,.csv,.json,.py,.js,.html,.md">
+                <div id="attachmentChipContainer" class="attachment-chip-container hidden"></div>
+
+                <textarea 
+                  id="mainChatInput" 
+                  class="composer-textarea" 
+                  rows="2" 
+                  placeholder="Ask anything or paste code... (Press Enter to send, Shift+Enter for newline)" 
+                  required
+                ></textarea>
+
+                <div class="composer-bottom-row">
+                  <!-- Left Controls: Attach, Search, Use Context Switch -->
+                  <div class="composer-left-controls">
+                    <button type="button" class="btn-composer-pill" id="btnAttach" title="Attach document or dataset">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                      </svg>
+                      <span id="btnAttachLabel">Attach</span>
+                    </button>
+
+                    <button type="button" class="btn-composer-pill" id="btnSearch" title="Toggle live web search">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      </svg>
+                      <span id="btnSearchLabel">Search</span>
+                    </button>
+
+                    <div class="toggle-context-wrap" title="Maintain conversation context memory across turns">
+                      <label class="switch-ios">
+                        <input type="checkbox" id="useContextToggle" checked>
+                        <span class="slider-ios round"></span>
+                      </label>
+                      <span class="toggle-label-text">Use Context</span>
+                    </div>
+                  </div>
+
+                  <!-- Right Controls: Fast / Pro / Auto Router Segmented Controls + Send -->
+                  <div class="composer-right-controls">
+                    <div class="model-tier-segmented-box" id="modelSelectorBox">
+                      <!-- Fast Pill -->
+                      <button type="button" class="tier-choice-btn" data-mode="fast" id="tierBtnFast" title="Fast Mode: Low cost, rapid inference">
+                        <div class="tier-choice-icon orange-icon">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                          </svg>
+                        </div>
+                        <div class="tier-choice-text">
+                          <div class="tier-choice-name">Fast</div>
+                          <div class="tier-choice-sub">Low cost</div>
+                        </div>
+                      </button>
+
+                      <!-- Pro Pill -->
+                      <button type="button" class="tier-choice-btn" data-mode="pro" id="tierBtnPro" title="Pro Mode: Deep reasoning and complex tasks">
+                        <div class="tier-choice-icon purple-icon">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+                          </svg>
+                        </div>
+                        <div class="tier-choice-text">
+                          <div class="tier-choice-name">Pro</div>
+                          <div class="tier-choice-sub">High quality</div>
+                        </div>
+                      </button>
+
+                      <!-- Auto Router Pill (ACTIVE BY DEFAULT) -->
+                      <button type="button" class="tier-choice-btn active" data-mode="auto" id="tierBtnAuto" title="Auto Router: Intelligent cost & quality optimization">
+                        <div class="tier-choice-icon white-icon">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A8 8 0 0 1 4.07 11H5a1 1 0 0 1 0-2h-.93A8 8 0 0 1 11 4.07V5a1 1 0 0 1 2 0v-.93A8 8 0 0 1 19.93 9H19a1 1 0 0 1 0 2h.93A8 8 0 0 1 13 16.93z"/>
+                          </svg>
+                        </div>
+                        <div class="tier-choice-text">
+                          <div class="tier-choice-name">Auto Router</div>
+                          <div class="tier-choice-sub">Best for your query</div>
+                        </div>
+                        <svg class="chevron-down-mini" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </button>
+                    </div>
+
+                    <!-- Circular Violet Send Button -->
+                    <button type="submit" class="btn-send-circle" id="sendBtn" title="Send Query (Enter)">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- CHAT PROCESSING & RESPONSES STREAM -->
+            <div class="home-chat-stream" id="chatStream">
+              <div id="chatPlaceholder" class="hidden"></div>
+            </div>
+
+            <!-- Loading Pulse State -->
+            <div id="chatLoadingState" class="chat-loading-clean hidden">
+              <div class="loading-pulse-spinner"></div>
+              <div class="loading-labels">
+                <span id="loadingStepText" class="step-primary">NEXORA is thinking...</span>
+                <span class="step-sub">Analyzing token complexity and selecting optimal neural tier</span>
+              </div>
+            </div>
+
+
+            <!-- QUICK ACTION CARDS (ROW OF 5 CARDS) -->
+            <div class="quick-actions-row">
+              <!-- 1. Create -->
+              <div class="quick-action-card" data-action="create" data-prompt="Help me design an innovative, scalable software architecture plan for an AI product.">
+                <div class="card-top-flex">
+                  <div class="action-icon-circle bg-soft-orange">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="text-orange" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                    </svg>
+                  </div>
+                  <div class="action-arrow">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="action-title">Create</div>
+                <div class="action-desc">Turn ideas into reality</div>
+              </div>
+
+              <!-- 2. Research -->
+              <div class="quick-action-card" data-action="research" data-prompt="Synthesize recent breakthrough techniques in neural network cost optimization and model routing.">
+                <div class="card-top-flex">
+                  <div class="action-icon-circle bg-soft-blue">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-blue" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </div>
+                  <div class="action-arrow">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="action-title">Research</div>
+                <div class="action-desc">Analyze & learn</div>
+              </div>
+
+              <!-- 3. Code -->
+              <div class="quick-action-card" data-action="code" data-prompt="Write clean, modular, and high-performance Python code with type annotations and error handling.">
+                <div class="card-top-flex">
+                  <div class="action-icon-circle bg-soft-green">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-green" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                  </div>
+                  <div class="action-arrow">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="action-title">Code</div>
+                <div class="action-desc">Build & debug</div>
+              </div>
+
+              <!-- 4. Plan -->
+              <div class="quick-action-card" data-action="plan" data-prompt="Draft a structured 4-week roadmap to build and launch an AI product with clear milestones.">
+                <div class="card-top-flex">
+                  <div class="action-icon-circle bg-soft-pink">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-pink" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                  </div>
+                  <div class="action-arrow">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="action-title">Plan</div>
+                <div class="action-desc">Organize & achieve</div>
+              </div>
+
+              <!-- 5. Explore -->
+              <div class="quick-action-card" data-action="explore" data-prompt="Explain the pricing, token throughput, and benchmark tradeoffs between Small, Balanced, and Pro AI models.">
+                <div class="card-top-flex">
+                  <div class="action-icon-circle bg-soft-purple">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-purple" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                  </div>
+                  <div class="action-arrow">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="action-title">Explore</div>
+                <div class="action-desc">Discover more</div>
+              </div>
+            </div>
+
+
+            <!-- FEATURE BANNER CARDS (ROW OF 4 CARDS) -->
+            <div class="feature-cards-row">
+              <!-- 1. Lower Costs -->
+              <div class="feature-banner-card">
+                <div class="feature-icon-square bg-soft-green">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="text-green" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <div class="feature-text-block">
+                  <div class="feature-title">Lower Costs</div>
+                  <div class="feature-sub">Spend only what you need</div>
+                </div>
+              </div>
+
+              <!-- 2. Smarter Routing -->
+              <div class="feature-banner-card">
+                <div class="feature-icon-square bg-soft-purple">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="text-purple">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </div>
+                <div class="feature-text-block">
+                  <div class="feature-title">Smarter Routing</div>
+                  <div class="feature-sub">Best model, every time</div>
+                </div>
+              </div>
+
+              <!-- 3. Better Results -->
+              <div class="feature-banner-card">
+                <div class="feature-icon-square bg-soft-orange">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="text-orange" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                </div>
+                <div class="feature-text-block">
+                  <div class="feature-title">Better Results</div>
+                  <div class="feature-sub">More intelligence, less waste</div>
+                </div>
+              </div>
+
+              <!-- 4. Built for You -->
+              <div class="feature-banner-card">
+                <div class="feature-icon-square bg-soft-blue">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="text-blue" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="feature-text-block">
+                  <div class="feature-title">Built for You</div>
+                  <div class="feature-sub">Personal, academic, research & more</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- FOOTER TAGLINE -->
+            <footer class="home-bottom-footer">
+              <span class="footer-tagline">Optimize • Innovate • Create | <strong>NEXORA</strong></span>
+            </footer>
+
+          </div>
+        </section>
+
+
+        <!-- ==========================================
+             VIEW 2: IMPACT PAGE (/impact)
+             ========================================== -->
+        <section id="viewImpact" class="tab-view hidden">
+          <div class="page-inner-pad">
+            <div class="page-title-row">
+              <div>
+                <h2 class="section-main-title">Today's Impact</h2>
+                <p class="section-sub-title">Real-time cost savings & inference efficiency metrics across your sessions</p>
+              </div>
+              <div class="page-actions-right">
+                <button class="btn-action-outline" id="refreshImpactBtn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                  </svg>
+                  <span>Refresh Impact</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Highlight Banner Card: "You saved 69%" -->
+            <div class="impact-headline-banner">
+              <div class="impact-banner-left">
+                <div class="impact-banner-tag">OPTIMIZATION SUMMARY</div>
+                <div class="impact-banner-large-stat">You saved <span id="impSavedHeroPct" class="text-green font-mono">69.4%</span></div>
+                <p class="impact-banner-sub">Compared to using high-end models for all queries without Nexora smart routing.</p>
+              </div>
+              <div class="impact-banner-right">
+                <div class="stat-pill-highlight">
+                  <span class="stat-pill-label">Total Saved:</span>
+                  <span id="impHeroSavedAmount" class="stat-pill-val text-green font-mono">$0.0000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 KPI Cards Grid -->
+            <div class="impact-kpi-grid">
+              <div class="impact-kpi-card">
+                <div class="kpi-tag-label">TOTAL REQUESTS</div>
+                <div class="kpi-val-number font-mono" id="impTotalRequests">0</div>
+                <div class="kpi-sub-footnote">Optimized queries executed</div>
+              </div>
+
+              <div class="impact-kpi-card">
+                <div class="kpi-tag-label">TOTAL TOKENS</div>
+                <div class="kpi-val-number font-mono" id="impTotalTokens">0</div>
+                <div class="kpi-sub-footnote" id="impTokensDetail">In: 0 | Out: 0</div>
+              </div>
+
+              <div class="impact-kpi-card">
+                <div class="kpi-tag-label">TOTAL COST</div>
+                <div class="kpi-val-number text-purple font-mono" id="impTotalCost">$0.0000</div>
+                <div class="kpi-sub-footnote">Routed inference spend</div>
+              </div>
+
+              <div class="impact-kpi-card highlight-saved">
+                <div class="kpi-tag-label">COST SAVED BY NEXORA</div>
+                <div class="kpi-val-number text-green font-mono" id="impCostSaved">0.0%</div>
+                <div class="kpi-sub-footnote text-green" id="impNetSaved">$0.0000 net savings</div>
+              </div>
+
+              <div class="impact-kpi-card">
+                <div class="kpi-tag-label">AVERAGE LATENCY</div>
+                <div class="kpi-val-number font-mono" id="impAvgLatency">0 ms</div>
+                <div class="kpi-sub-footnote" id="impCacheHitRate">Cache hit rate: 0%</div>
+              </div>
+            </div>
+
+            <!-- Cost Savings & Model Usage Visualization -->
+            <div class="impact-charts-grid">
+              <div class="impact-chart-box">
+                <div class="chart-box-header">
+                  <h3 class="chart-box-title">Cost Savings Comparison</h3>
+                  <span class="chart-badge">REAL-TIME TELEMETRY</span>
+                </div>
+                <p class="chart-box-sub">Optimized NEXORA inference vs. Unoptimized Always-Expensive baseline</p>
+                <div class="chart-canvas-wrap">
+                  <canvas id="impactCostCanvas" width="500" height="230"></canvas>
+                </div>
+              </div>
+
+              <div class="impact-chart-box">
+                <div class="chart-box-header">
+                  <h3 class="chart-box-title">Model Tier Distribution</h3>
+                  <span class="chart-badge" id="impTierTotalCount">0 Queries</span>
+                </div>
+                <p class="chart-box-sub">Real-time compute volume routed across capability tiers</p>
+                
+                <div class="tier-distribution-list">
+                  <div class="tier-dist-item">
+                    <div class="dist-item-top">
+                      <span class="dot-tier green"></span>
+                      <span class="dist-tier-name">FAST Tier (Haiku / Small / 8B)</span>
+                      <span class="dist-tier-count font-mono" id="impCheapCount">0 req</span>
+                    </div>
+                    <div class="dist-progress-bar">
+                      <div class="progress-fill green" id="impCheapFill" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <div class="tier-dist-item">
+                    <div class="dist-item-top">
+                      <span class="dot-tier yellow"></span>
+                      <span class="dist-tier-name">NORMAL Tier (GPT-3.5 / Balanced / 70B)</span>
+                      <span class="dist-tier-count font-mono" id="impNormalCount">0 req</span>
+                    </div>
+                    <div class="dist-progress-bar">
+                      <div class="progress-fill yellow" id="impNormalFill" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <div class="tier-dist-item">
+                    <div class="dist-item-top">
+                      <span class="dot-tier red"></span>
+                      <span class="dist-tier-name">PRO Tier (GPT-4 / Claude / Pro)</span>
+                      <span class="dist-tier-count font-mono" id="impPowerfulCount">0 req</span>
+                    </div>
+                    <div class="dist-progress-bar">
+                      <div class="progress-fill red" id="impPowerfulFill" style="width: 0%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ==========================================
+             VIEW 3: 3D ROUTING CORE (/routing-core)
+             ========================================== -->
+        <section id="viewRoutingCore" class="tab-view hidden">
+          <div class="page-inner-pad">
+            <div class="page-title-row">
+              <div>
+                <h2 class="section-main-title">3D Routing Core Visualizer</h2>
+                <p class="section-sub-title">Real-time neural query classification, candidate evaluation, and token pricing</p>
+              </div>
+            </div>
+
+            <!-- Complete 3D Visualizer Card -->
+            <div class="routing-core-full-card">
+              <div class="routing-core-3d-viewport">
+                <canvas id="routingCore3dCanvas" class="routing-core-canvas"></canvas>
+                <div class="routing-core-hud-overlay">
+                  <div class="hud-pill">NEURAL DISPATCHER • LIVE</div>
+                </div>
+              </div>
+
+              <!-- Execution Pipeline Flow -->
+              <div class="routing-pipeline-strip">
+                <div class="pipe-node">
+                  <div class="pipe-badge">1</div>
+                  <div class="pipe-lbl">User Query</div>
+                  <div class="pipe-val font-mono" id="rcUserQuery">"..."</div>
+                </div>
+                <div class="pipe-arrow">➔</div>
+                <div class="pipe-node">
+                  <div class="pipe-badge">2</div>
+                  <div class="pipe-lbl">Complexity Analysis</div>
+                  <div class="pipe-val text-yellow" id="rcDifficulty">EASY</div>
+                </div>
+                <div class="pipe-arrow">➔</div>
+                <div class="pipe-node">
+                  <div class="pipe-badge">3</div>
+                  <div class="pipe-lbl">NEXORA Routing Core</div>
+                  <div class="pipe-val text-purple" id="rcTier">CHEAP TIER</div>
+                </div>
+                <div class="pipe-arrow">➔</div>
+                <div class="pipe-node">
+                  <div class="pipe-badge">4</div>
+                  <div class="pipe-lbl">Selected Model</div>
+                  <div class="pipe-val text-green" id="rcModel">Haiku / Small</div>
+                </div>
+              </div>
+
+              <!-- Telemetry HUD Grid -->
+              <div class="routing-telemetry-grid">
+                <div class="rc-hud-item">
+                  <div class="rc-lbl">Complexity</div>
+                  <div class="rc-val font-mono" id="rcHudComplexity">EASY</div>
+                </div>
+                <div class="rc-hud-item">
+                  <div class="rc-lbl">Selected Model</div>
+                  <div class="rc-val text-purple" id="rcHudModel">Haiku / Small (FAST)</div>
+                </div>
+                <div class="rc-hud-item">
+                  <div class="rc-lbl">Inference Cost</div>
+                  <div class="rc-val font-mono text-green" id="rcHudCost">$0.0012</div>
+                </div>
+                <div class="rc-hud-item">
+                  <div class="rc-lbl">Baseline Benchmark</div>
+                  <div class="rc-val font-mono text-muted" id="rcHudBaseline">$0.0240</div>
+                </div>
+                <div class="rc-hud-item">
+                  <div class="rc-lbl">Routing Reason</div>
+                  <div class="rc-val text-muted" id="rcHudReason">Optimal routing based on computational depth</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ==========================================
+             VIEW 4: EXPLORE
+             ========================================== -->
+        <section id="viewExplore" class="tab-view hidden">
+          <div class="page-inner-pad">
+            <div class="page-title-row">
+              <div>
+                <h2 class="section-main-title">Explore Nexora Capabilities</h2>
+                <p class="section-sub-title">Discover tiered routing, model benchmarks, prompt engineering, and workflows</p>
+              </div>
+            </div>
+
+            <div class="explore-grid-clean">
+              <!-- FAST / CHEAP -->
+              <div class="explore-tier-clean-card">
+                <div class="tier-header-badge green">FAST TIER • LOW COST</div>
+                <h3 class="tier-card-heading">Haiku / Small Models</h3>
+                <p class="tier-card-desc">Ultra-low latency and compute footprint for direct answers, syntax conversions, and definitions.</p>
+                <div class="tier-list-box">
+                  <div class="list-head">Ideal Tasks:</div>
+                  <ul class="tier-clean-list">
+                    <li>Simple factual & educational lookups</li>
+                    <li>Short definitions & keyword lookups</li>
+                    <li>Basic arithmetic & syntax conversions</li>
+                    <li>Quick text summarization</li>
+                  </ul>
+                </div>
+                <div class="tier-chip-trigger" data-prompt="What is quantum computing?">
+                  <span>"What is quantum computing?"</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+              </div>
+
+              <!-- PRO / BALANCED -->
+              <div class="explore-tier-clean-card">
+                <div class="tier-header-badge yellow">BALANCED TIER • MODERATE</div>
+                <h3 class="tier-card-heading">GPT-3.5 / Balanced Models</h3>
+                <p class="tier-card-desc">Cost-effective reasoning for everyday programming, document synthesis, and structured workflows.</p>
+                <div class="tier-list-box">
+                  <div class="list-head">Ideal Tasks:</div>
+                  <ul class="tier-clean-list">
+                    <li>Everyday programming & debugging</li>
+                    <li>Document analysis & summarization</li>
+                    <li>Algorithmic implementations</li>
+                    <li>Multi-step general purpose queries</li>
+                  </ul>
+                </div>
+                <div class="tier-chip-trigger" data-prompt="Write Python code for binary search with edge case tests">
+                  <span>"Write Python code for binary search"</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+              </div>
+
+              <!-- ADVANCED / PRO -->
+              <div class="explore-tier-clean-card">
+                <div class="tier-header-badge purple">PRO TIER • HIGH QUALITY</div>
+                <h3 class="tier-card-heading">GPT-4 / Claude / Pro</h3>
+                <p class="tier-card-desc">Maximum reasoning depth for complex distributed architectures, mathematical proofs, and deep research.</p>
+                <div class="tier-list-box">
+                  <div class="list-head">Ideal Tasks:</div>
+                  <ul class="tier-clean-list">
+                    <li>Distributed architecture & system design</li>
+                    <li>Mathematical proofs & deep technical analysis</li>
+                    <li>Complex code refactoring & security auditing</li>
+                    <li>Multi-document research synthesis</li>
+                  </ul>
+                </div>
+                <div class="tier-chip-trigger" data-prompt="Design a distributed architecture for a real-time AI streaming service">
+                  <span>"Design a distributed architecture for an AI system"</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ==========================================
+             VIEW 5: PROMPT LIBRARY
+             ========================================== -->
+        <section id="viewPrompts" class="tab-view hidden">
+          <div class="page-inner-pad">
+            <div class="page-title-row">
+              <div>
+                <h2 class="section-main-title">Prompt Library</h2>
+                <p class="section-sub-title">Curate, save, categorize, and deploy reusable prompt templates</p>
+              </div>
+              <button class="btn-primary-gradient" id="openAddPromptModalBtn">+ New Prompt</button>
+            </div>
+
+            <!-- Categories Filter Strip -->
+            <div class="prompt-category-filter-strip" id="promptCategoryFilterStrip">
+              <button class="filter-chip active" data-cat="All">All Prompts</button>
+              <button class="filter-chip" data-cat="Coding">Coding</button>
+              <button class="filter-chip" data-cat="Research">Research</button>
+              <button class="filter-chip" data-cat="Writing">Writing</button>
+              <button class="filter-chip" data-cat="Study">Study</button>
+              <button class="filter-chip" data-cat="Business">Business</button>
+              <button class="filter-chip" data-cat="Data Analysis">Data Analysis</button>
+              <button class="filter-chip" data-cat="Custom">Custom</button>
+            </div>
+
+            <div class="prompts-grid-clean" id="promptsGridContainer">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ==========================================
+             VIEW 6: USAGE & ANALYTICS AUDIT
+             ========================================== -->
+        <section id="viewAnalytics" class="tab-view hidden">
+          <div class="page-inner-pad">
+            <div class="page-title-row">
+              <div>
+                <h2 class="section-main-title">Usage & Analytics Audit</h2>
+                <p class="section-sub-title">Comprehensive request ledger, token telemetry, and routing ledger</p>
+              </div>
+              <button class="btn-action-outline" id="refreshAnalyticsBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                <span>Refresh Data</span>
+              </button>
+            </div>
+
+            <!-- Audit Log Table -->
+            <div class="analytics-table-container">
+              <table class="clean-data-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>User Request</th>
+                    <th>Difficulty</th>
+                    <th>Tier</th>
+                    <th>Model</th>
+                    <th>Tokens</th>
+                    <th>Cost</th>
+                    <th>Savings</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody id="analyticsHistoryBody">
+                  <tr>
+                    <td colspan="9" class="text-center text-muted">No requests recorded yet. Start by asking a question on Home!</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+
+  <!-- ============================================================
+       MODAL 1: CREATE / MANAGE WORKSPACE MODAL
+       ============================================================ -->
+  <div id="createWorkspaceModal" class="modal-overlay hidden">
+    <div class="modal-clean-card">
+      <div class="modal-header">
+        <div>
+          <h3>Create Workspace</h3>
+          <p class="modal-sub-label">Organize conversations and prompts into isolated environments</p>
+        </div>
+        <button class="btn-close-modal" id="closeWsModalBtn">✕</button>
+      </div>
+      <form id="createWorkspaceForm" class="modal-body">
+        <label class="modal-label" for="wsNameInput">Workspace Name</label>
+        <input type="text" id="wsNameInput" class="modal-clean-input" placeholder="e.g. Research, Hackathons, College" required>
+        
+        <label class="modal-label" for="wsDescInput" style="margin-top: 1rem;">Description (optional)</label>
+        <input type="text" id="wsDescInput" class="modal-clean-input" placeholder="e.g. Dedicated workspace for AI competitions">
+        
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-gradient">Create Workspace</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       MODAL 2: ADD / EDIT PROMPT MODAL
+       ============================================================ -->
+  <div id="addPromptModal" class="modal-overlay hidden">
+    <div class="modal-clean-card">
+      <div class="modal-header">
+        <div>
+          <h3>Create New Prompt</h3>
+          <p class="modal-sub-label">Save custom prompt templates with category tagging</p>
+        </div>
+        <button class="btn-close-modal" id="closePromptModalBtn">✕</button>
+      </div>
+      <form id="addPromptForm" class="modal-body">
+        <label class="modal-label" for="promptTitleInput">Prompt Title</label>
+        <input type="text" id="promptTitleInput" class="modal-clean-input" placeholder="e.g. Python Async Refactor" required>
+
+        <label class="modal-label" for="promptCategorySelect" style="margin-top: 1rem;">Category</label>
+        <select id="promptCategorySelect" class="modal-clean-input">
+          <option value="Coding">Coding</option>
+          <option value="Research">Research</option>
+          <option value="Writing">Writing</option>
+          <option value="Study">Study</option>
+          <option value="Business">Business</option>
+          <option value="Data Analysis">Data Analysis</option>
+          <option value="Custom" selected>Custom</option>
+        </select>
+
+        <label class="modal-label" for="promptTextInput" style="margin-top: 1rem;">Prompt Content</label>
+        <textarea id="promptTextInput" class="modal-clean-textarea" rows="4" placeholder="Help me write clean, modular, and high-throughput code..." required></textarea>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-gradient">Save to Library</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       MODAL 3: COMPREHENSIVE SETTINGS MODAL (AI PROVIDERS & ACCOUNT)
+       ============================================================ -->
+  <div id="settingsModal" class="modal-overlay hidden">
+    <div class="modal-clean-card settings-modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>NEXORA Settings</h3>
+          <p class="modal-sub-label">Manage your account profile, AI providers, and model credentials</p>
+        </div>
+        <button id="closeSettingsModalBtn" class="btn-close-modal">✕</button>
+      </div>
+
+      <!-- Settings Nav Tabs -->
+      <div class="settings-nav-tabs">
+        <button type="button" class="settings-tab-btn active" data-tab="providers" id="tabBtnAiProviders">
+          <span>AI Providers</span>
+        </button>
+        <button type="button" class="settings-tab-btn" data-tab="account" id="tabBtnAccount">
+          <span>Account & Profile</span>
+        </button>
+        <button type="button" class="settings-tab-btn" data-tab="preferences" id="tabBtnPreferences">
+          <span>Preferences</span>
+        </button>
+      </div>
+
+      <div class="modal-body settings-modal-body">
+        
+        <!-- TAB 1: AI PROVIDERS SETTINGS -->
+        <div id="settingsTabProviders" class="settings-tab-panel active">
+          <div class="settings-intro-text">
+            Configure your AI provider credentials for live model routing. API keys are safely managed in <code>backend/.env</code> and never exposed to the client.
+          </div>
+
+          <form id="providerSettingsForm" class="provider-config-list">
+            <!-- Groq -->
+            <div class="provider-card-config">
+              <div class="provider-card-top">
+                <div class="provider-info-left">
+                  <strong>Groq</strong>
+                  <span class="provider-models-badge">Llama 3.3 70B, Llama 3.1 8B Instant</span>
+                </div>
+                <span class="provider-status-tag" id="statusTagGroq">○ Not configured</span>
+              </div>
+              <input type="password" id="inputKeyGroq" class="modal-clean-input input-key-masked" placeholder="Enter GROQ_API_KEY (e.g. gsk_...)">
+            </div>
+
+            <!-- OpenRouter -->
+            <div class="provider-card-config">
+              <div class="provider-card-top">
+                <div class="provider-info-left">
+                  <strong>OpenRouter</strong>
+                  <span class="provider-models-badge">Meta Llama 3, Claude 3, Qwen, Mistral</span>
+                </div>
+                <span class="provider-status-tag" id="statusTagOpenRouter">○ Not configured</span>
+              </div>
+              <input type="password" id="inputKeyOpenRouter" class="modal-clean-input input-key-masked" placeholder="Enter OPENROUTER_API_KEY (e.g. sk-or-...)">
+            </div>
+
+            <!-- OpenAI -->
+            <div class="provider-card-config">
+              <div class="provider-card-top">
+                <div class="provider-info-left">
+                  <strong>OpenAI</strong>
+                  <span class="provider-models-badge">GPT-4o, GPT-4o-mini, GPT-3.5</span>
+                </div>
+                <span class="provider-status-tag" id="statusTagOpenAI">○ Not configured</span>
+              </div>
+              <input type="password" id="inputKeyOpenAI" class="modal-clean-input input-key-masked" placeholder="Enter OPENAI_API_KEY (e.g. sk-...)">
+            </div>
+
+            <!-- Google Gemini -->
+            <div class="provider-card-config">
+              <div class="provider-card-top">
+                <div class="provider-info-left">
+                  <strong>Google Gemini</strong>
+                  <span class="provider-models-badge">Gemini 1.5 Flash, Gemini 1.5 Pro</span>
+                </div>
+                <span class="provider-status-tag" id="statusTagGemini">○ Not configured</span>
+              </div>
+              <input type="password" id="inputKeyGemini" class="modal-clean-input input-key-masked" placeholder="Enter GEMINI_API_KEY (or GOOGLE_API_KEY)">
+            </div>
+
+            <!-- Ollama Local Engine -->
+            <div class="provider-card-config">
+              <div class="provider-card-top">
+                <div class="provider-info-left">
+                  <strong>Ollama (Local Engine)</strong>
+                  <span class="provider-models-badge" id="ollamaModelsBadge">qwen3:1.7b, llama3</span>
+                </div>
+                <span class="provider-status-tag" id="statusTagOllama">○ Offline</span>
+              </div>
+              <p class="provider-hint-text">Probes <code>http://127.0.0.1:11434</code>. Treated as optional local inference when active.</p>
+            </div>
+
+            <div class="modal-footer justify-between" style="margin-top: 1.2rem;">
+              <button type="button" class="btn-action-outline" id="btnRefreshProviderStatus">
+                <span>Test Connection</span>
+              </button>
+              <button type="submit" class="btn-primary-gradient" id="btnSaveProviderKeys">
+                <span>Save Credentials</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 2: ACCOUNT SETTINGS -->
+        <div id="settingsTabAccount" class="settings-tab-panel hidden">
+          <div class="profile-avatar-large text-center">
+            <img id="modalProfileImg" class="modal-profile-img hidden" alt="Profile">
+            <span class="modal-profile-initial" id="modalProfileInitial">M</span>
+          </div>
+          
+          <form id="profileEditForm" style="margin-top: 1.2rem;">
+            <label class="modal-label" for="profileNameInput">Display Name</label>
+            <input type="text" id="profileNameInput" class="modal-clean-input" placeholder="Your Name">
+
+            <label class="modal-label" style="margin-top: 1rem;">Email Address</label>
+            <input type="text" id="profileEmailDisplay" class="modal-clean-input font-mono" disabled style="background: #f8fafc; color: #64748b;">
+
+            <div class="verified-auth-pill" id="settingsAuthBadge" style="margin-top: 1rem;">
+              ✓ Authenticated Account Session
+            </div>
+
+            <div class="modal-footer justify-between" style="margin-top: 1.5rem;">
+              <button type="button" id="logoutBtn" class="btn-logout-clean">Sign Out</button>
+              <button type="submit" class="btn-primary-gradient">Update Profile</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 3: PREFERENCES -->
+        <div id="settingsTabPreferences" class="settings-tab-panel hidden">
+          <div class="settings-pref-row">
+            <div>
+              <strong>Default Workspace</strong>
+              <p class="text-muted text-sm">Preferred workspace to open upon signing in</p>
+            </div>
+            <select id="prefDefaultWorkspaceSelect" class="modal-clean-input" style="width: auto; min-width: 160px;">
+              <option value="Personal">Personal</option>
+              <option value="College">College</option>
+              <option value="Research">Research</option>
+              <option value="Hackathons">Hackathons</option>
+            </select>
+          </div>
+
+          <div class="settings-pref-row" style="margin-top: 1.2rem;">
+            <div>
+              <strong>Default Model Mode</strong>
+              <p class="text-muted text-sm">Initial mode selected in chat composer</p>
+            </div>
+            <select id="prefDefaultModeSelect" class="modal-clean-input" style="width: auto; min-width: 160px;">
+              <option value="auto">Auto Router (Recommended)</option>
+              <option value="fast">Fast (Low cost)</option>
+              <option value="pro">Pro (High quality)</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       MODAL 4: UPGRADE TO PRO / PLANS MODAL
+       ============================================================ -->
+  <div id="plansModal" class="modal-overlay hidden">
+    <div class="modal-clean-card plans-modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Choose Your Nexora Plan</h3>
+          <p class="modal-sub-label">Scale your intelligence with optimal inference routing</p>
+        </div>
+        <button id="closePlansModalBtn" class="btn-close-modal">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="plans-grid-row">
+          <!-- Free Plan -->
+          <div class="plan-card">
+            <div class="plan-badge">FREE</div>
+            <div class="plan-price">$0 <span>/ month</span></div>
+            <p class="plan-desc">Basic access for exploration and everyday quick queries.</p>
+            <ul class="plan-features-list">
+              <li>✓ Basic FAST model access</li>
+              <li>✓ Standard request routing</li>
+              <li>✓ 4 default workspaces</li>
+              <li>✓ Prompt library access</li>
+              <li>✓ Basic telemetry stats</li>
+            </ul>
+            <button class="btn-action-outline btn-block" disabled style="margin-top: auto;">Current Plan</button>
+          </div>
+
+          <!-- Pro Plan (Recommended) -->
+          <div class="plan-card featured-pro">
+            <div class="plan-badge-pro">RECOMMENDED</div>
+            <div class="plan-name-pro">PRO</div>
+            <div class="plan-price">$20 <span>/ month</span></div>
+            <p class="plan-desc">Full access to advanced models, priority routing, and unlimited workspaces.</p>
+            <ul class="plan-features-list">
+              <li>✓ High-limit FAST, BALANCED & PRO routing</li>
+              <li>✓ Deep reasoning models (Claude 3.5, GPT-4o)</li>
+              <li>✓ Priority neural queue processing</li>
+              <li>✓ Unlimited custom workspaces</li>
+              <li>✓ Advanced 3D telemetry & impact auditing</li>
+              <li>✓ Dedicated provider key vaults</li>
+            </ul>
+            <button class="btn-primary-gradient btn-block" id="btnConfirmUpgradePro" style="margin-top: auto;">Upgrade to Pro</button>
+          </div>
+
+          <!-- Team Plan -->
+          <div class="plan-card">
+            <div class="plan-badge">TEAM</div>
+            <div class="plan-price">$50 <span>/ month</span></div>
+            <p class="plan-desc">Collaborative team workspaces, shared prompt vaults, and centralized admin controls.</p>
+            <ul class="plan-features-list">
+              <li>✓ Shared team workspaces & prompts</li>
+              <li>✓ Centralized billing & aggregated audit logs</li>
+              <li>✓ Custom routing policy rules</li>
+              <li>✓ Team member role management</li>
+              <li>✓ Dedicated support channel</li>
+            </ul>
+            <button class="btn-action-outline btn-block" style="margin-top: auto;">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       MODAL 5: CONVERSATION HISTORY DRAWER / MODAL
+       ============================================================ -->
+  <div id="historyModal" class="modal-overlay hidden">
+    <div class="modal-clean-card history-modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Conversation History</h3>
+          <p class="modal-sub-label" id="historyWorkspaceLabel">Personal Workspace</p>
+        </div>
+        <div class="history-modal-header-actions">
+          <button id="clearAllHistoryBtn" class="btn-action-sm text-red" title="Clear all history in this workspace">Clear Workspace</button>
+          <button id="closeHistoryModalBtn" class="btn-close-modal">✕</button>
+        </div>
+      </div>
+      <div class="modal-body history-modal-body" id="historyModalListContainer">
+        <!-- Grouped by Today, Yesterday, Previous 7 Days, Older -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       MODAL 6: HELP & SUPPORT MODAL
+       ============================================================ -->
+  <div id="helpModal" class="modal-overlay hidden">
+    <div class="modal-clean-card help-modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Nexora Help & Documentation</h3>
+          <p class="modal-sub-label">Learn how to maximize your AI efficiency and cost savings</p>
+        </div>
+        <button id="closeHelpModalBtn" class="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body help-modal-body">
+        <div class="help-section-item">
+          <h4>🔮 How does Auto Router work?</h4>
+          <p>Nexora analyzes the syntactic and logical complexity of your prompt in real-time. Factual lookups and simple queries are routed to ultra-fast, low-cost models (Haiku / 8B), while complex system architecture and mathematical proofs are dispatched to high-reasoning neural tiers (GPT-4 / Claude 3.5), saving up to 70% in inference costs.</p>
+        </div>
+        <div class="help-section-item">
+          <h4>💬 Multi-Turn Conversation Memory</h4>
+          <p>When <strong>Use Context</strong> is enabled in the chat composer, Nexora preserves your conversation turns across consecutive questions, enabling natural iterative discussions.</p>
+        </div>
+        <div class="help-section-item">
+          <h4>⚡ Keyboard Shortcuts</h4>
+          <p>• <strong>Ctrl + K</strong>: Focus top search bar<br>• <strong>Enter</strong>: Send message<br>• <strong>Shift + Enter</strong>: Newline in composer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

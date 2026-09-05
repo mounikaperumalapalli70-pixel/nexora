@@ -1,0 +1,48 @@
+{
+  "workspaces": {
+    "usr_4633dd3b69": [
+      {
+        "name": "Personal",
+        "description": "Personal research, day-to-day queries, and ideas",
+        "created_at": 1700000000
+      },
+      {
+        "name": "College",
+        "description": "Academic coursework, assignments, and study materials",
+        "created_at": 1700000000
+      },
+      {
+        "name": "Research",
+        "description": "Deep literature review, paper synthesis, and technical explorations",
+        "created_at": 1700000000
+      },
+      {
+        "name": "Hackathons",
+        "description": "Rapid prototyping, MVP roadmaps, and competitive coding",
+        "created_at": 1700000000
+      }
+    ],
+    "usr_38a435383d": [
+      {
+        "name": "Personal",
+        "description": "Personal research, day-to-day queries, and ideas",
+        "created_at": 1700000000
+      },
+      {
+        "name": "College",
+        "description": "Academic coursework, assignments, and study materials",
+        "created_at": 1700000000
+      },
+      {
+        "name": "Research",
+        "description": "Deep literature review, paper synthesis, and technical explorations",
+        "created_at": 1700000000
+      },
+      {
+        "name": "Hackathons",
+        "description": "Rapid prototyping, MVP roadmaps, and competitive coding",
+        "created_at": 1700000000
+      }
+    ]
+  }
+}

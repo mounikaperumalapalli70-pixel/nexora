@@ -1,0 +1,104 @@
+{
+  "prompts": {
+    "usr_4633dd3b69": [
+      {
+        "id": "p_code_1",
+        "title": "Python Architecture Refactor",
+        "category": "Coding",
+        "content": "Help me write clean, modular, and high-throughput Python async code with proper type annotations, robust error handling, and unit test coverage.",
+        "is_favorite": true,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_research_1",
+        "title": "Literature Synthesis & Key Findings",
+        "category": "Research",
+        "content": "Synthesize the core mechanisms, performance benchmarks, and limitations described in this scientific document or topic into a structured briefing.",
+        "is_favorite": true,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_writing_1",
+        "title": "Executive Summary & Key Takeaways",
+        "category": "Writing",
+        "content": "Condense the provided text into a crisp executive summary with bulleted action items, risk factors, and strategic next steps.",
+        "is_favorite": false,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_study_1",
+        "title": "Feynman Technique Explainer",
+        "category": "Study",
+        "content": "Explain this complex technical concept using intuitive real-world analogies, step-by-step intuition, and clear mathematical foundations.",
+        "is_favorite": true,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_business_1",
+        "title": "SaaS Go-to-Market Strategy",
+        "category": "Business",
+        "content": "Draft a comprehensive 4-week launch roadmap for an AI software product, including positioning, distribution channels, and KPI tracking.",
+        "is_favorite": false,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_data_1",
+        "title": "Data Analysis & Pattern Insights",
+        "category": "Data Analysis",
+        "content": "Analyze the following dataset distribution, identify anomalies or correlations, and propose optimization hypotheses.",
+        "is_favorite": false,
+        "created_at": 1700000000
+      }
+    ],
+    "usr_38a435383d": [
+      {
+        "id": "p_code_1",
+        "title": "Python Architecture Refactor",
+        "category": "Coding",
+        "content": "Help me write clean, modular, and high-throughput Python async code with proper type annotations, robust error handling, and unit test coverage.",
+        "is_favorite": true,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_research_1",
+        "title": "Literature Synthesis & Key Findings",
+        "category": "Research",
+        "content": "Synthesize the core mechanisms, performance benchmarks, and limitations described in this scientific document or topic into a structured briefing.",
+        "is_favorite": true,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_writing_1",
+        "title": "Executive Summary & Key Takeaways",
+        "category": "Writing",
+        "content": "Condense the provided text into a crisp executive summary with bulleted action items, risk factors, and strategic next steps.",
+        "is_favorite": false,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_study_1",
+        "title": "Feynman Technique Explainer",
+        "category": "Study",
+        "content": "Explain this complex technical concept using intuitive real-world analogies, step-by-step intuition, and clear mathematical foundations.",
+        "is_favorite": true,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_business_1",
+        "title": "SaaS Go-to-Market Strategy",
+        "category": "Business",
+        "content": "Draft a comprehensive 4-week launch roadmap for an AI software product, including positioning, distribution channels, and KPI tracking.",
+        "is_favorite": false,
+        "created_at": 1700000000
+      },
+      {
+        "id": "p_data_1",
+        "title": "Data Analysis & Pattern Insights",
+        "category": "Data Analysis",
+        "content": "Analyze the following dataset distribution, identify anomalies or correlations, and propose optimization hypotheses.",
+        "is_favorite": false,
+        "created_at": 1700000000
+      }
+    ]
+  }
+}
