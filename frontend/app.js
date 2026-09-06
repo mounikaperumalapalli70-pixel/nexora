@@ -13,7 +13,8 @@
 // BACKEND CONFIGURATION
 // ============================================================
 
-const API_BASE = 'https://nexora-backend-gcjd.onrender.com';
+const API_BASE =
+  'https://nexora-backend-gcjd.onrender.com';
 
 console.log('[NEXORA] API_BASE:', API_BASE);
 
@@ -23,6 +24,7 @@ console.log('[NEXORA] API_BASE:', API_BASE);
 // ============================================================
 
 const state = {
+
   authenticated: false,
 
   user: {
@@ -36,62 +38,89 @@ const state = {
   },
 
   activeWorkspace: 'Personal',
+
   currentTab: 'home',
+
   activeConversationId: null,
+
   activeConversationTitle: null,
 
-  // auto / fast / pro
   activeMode: 'auto',
 
   useContext: true,
+
   searchActive: false,
+
   attachedFile: null,
 
   workspaces: [
+
     {
       name: 'Personal',
-      description: 'Personal research and daily queries'
+      description:
+        'Personal research and daily queries'
     },
+
     {
       name: 'College',
-      description: 'Academic coursework and assignments'
+      description:
+        'Academic coursework and assignments'
     },
+
     {
       name: 'Research',
-      description: 'Deep technical synthesis'
+      description:
+        'Deep technical synthesis'
     },
+
     {
       name: 'Hackathons',
-      description: 'Rapid MVP roadmaps and competitive coding'
+      description:
+        'Rapid MVP roadmaps and competitive coding'
     }
+
   ],
 
   conversations: [],
+
   prompts: [],
+
   activePromptCategory: 'All',
 
   telemetry: {
+
     totalRequests: 0,
+
     totalTokens: 0,
+
     inputTokens: 0,
+
     outputTokens: 0,
 
-    totalCost: 0.0,
-    baselineCost: 0.0,
-    totalSavings: 0.0,
-    savingsPercentage: 0.0,
+    totalCost: 0,
+
+    baselineCost: 0,
+
+    totalSavings: 0,
+
+    savingsPercentage: 0,
 
     averageLatency: 0,
 
     cacheHits: 0,
+
     cacheMisses: 0,
 
     cheapCount: 0,
+
     normalCount: 0,
+
     powerfulCount: 0,
 
     historyLogs: []
+
   }
+
 };
 
 
@@ -100,34 +129,61 @@ const state = {
 // ============================================================
 
 let auth3D = {
+
   scene: null,
+
   camera: null,
+
   renderer: null,
+
   sphere: null,
+
   rings: [],
+
   particles: null,
+
   animId: null
+
 };
+
 
 let hero3D = {
+
   scene: null,
+
   camera: null,
+
   renderer: null,
+
   sphere: null,
+
   rings: [],
+
   particles: null,
+
   animId: null
+
 };
 
+
 let routing3D = {
+
   scene: null,
+
   camera: null,
+
   renderer: null,
+
   coreMesh: null,
+
   outerRing: null,
+
   satelliteNodes: [],
+
   animId: null,
+
   isRouting: false
+
 };
 
 
@@ -166,48 +222,100 @@ const nameAuthInput =
 
 
 // ============================================================
-// IMPORTANT GOOGLE LOGIN
+// GOOGLE LOGIN
 // ============================================================
 
 if (btnGoogleSignIn) {
+
   btnGoogleSignIn.href =
     `${API_BASE}/auth/google/login`;
+
+  console.log(
+    '[NEXORA] Google login URL:',
+    btnGoogleSignIn.href
+  );
+
 }
 
 
 // ============================================================
-// GOOGLE AUTH
+// GOOGLE CONFIGURATION
 // ============================================================
 
 async function initGoogleGsiConfig() {
+
   try {
-    const res =
-      await fetch(`${API_BASE}/auth/config`);
 
-    if (!res.ok) return;
+    const response =
+      await fetch(
+        `${API_BASE}/auth/config`,
+        {
+          method: 'GET',
 
-    const cfg = await res.json();
+          credentials: 'include',
+
+          headers: {
+            'Accept':
+              'application/json'
+          }
+        }
+      );
+
+
+    if (!response.ok) {
+
+      console.warn(
+        '[NEXORA] Google config request failed:',
+        response.status
+      );
+
+      return;
+
+    }
+
+
+    const config =
+      await response.json();
+
+
+    console.log(
+      '[NEXORA] Google configuration received'
+    );
+
 
     if (
-      cfg.google_client_id &&
-      !cfg.google_client_id.startsWith('YOUR_GOOGLE')
+      config &&
+      config.google_client_id &&
+      !config.google_client_id
+        .startsWith('YOUR_GOOGLE')
     ) {
-      const gsiSlot =
-        document.getElementById('g_id_onload');
 
-      if (gsiSlot) {
-        gsiSlot.setAttribute(
-          'data-client_id',
-          cfg.google_client_id
+      const googleSlot =
+        document.getElementById(
+          'g_id_onload'
         );
+
+
+      if (googleSlot) {
+
+        googleSlot.setAttribute(
+          'data-client_id',
+          config.google_client_id
+        );
+
       }
+
     }
+
   } catch (error) {
+
     console.warn(
-      '[NEXORA] Google configuration check failed:',
+      '[NEXORA] Google configuration error:',
       error
     );
+
   }
+
 }
 
 
@@ -216,52 +324,107 @@ async function initGoogleGsiConfig() {
 // ============================================================
 
 async function checkSessionAuth() {
+
+  console.log(
+    '[NEXORA] Checking authentication session...'
+  );
+
+
   try {
-    const res = await fetch(
-      `${API_BASE}/auth/me`,
-      {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json'
+
+    const response =
+      await fetch(
+        `${API_BASE}/auth/me`,
+        {
+          method: 'GET',
+
+          credentials: 'include',
+
+          mode: 'cors',
+
+          cache: 'no-store',
+
+          headers: {
+            'Accept':
+              'application/json',
+
+            'Cache-Control':
+              'no-cache'
+          }
         }
-      }
+      );
+
+
+    console.log(
+      '[NEXORA] /auth/me status:',
+      response.status
     );
 
-    if (!res.ok) {
+
+    if (!response.ok) {
+
       return false;
+
     }
 
-    const data = await res.json();
+
+    const data =
+      await response.json();
+
+
+    console.log(
+      '[NEXORA] /auth/me response:',
+      data
+    );
+
 
     if (
       data &&
-      data.authenticated &&
+      data.authenticated === true &&
       data.user
     ) {
-      setAuthenticatedUser(data.user);
+
+      setAuthenticatedUser(
+        data.user
+      );
+
       return true;
+
     }
 
   } catch (error) {
-    console.warn(
+
+    console.error(
       '[NEXORA] Session verification failed:',
       error
     );
+
   }
 
+
   return false;
+
 }
 
 
 // ============================================================
-// SET USER
+// SET AUTHENTICATED USER
 // ============================================================
 
 function setAuthenticatedUser(userData) {
+
+  if (!userData) {
+
+    return;
+
+  }
+
+
   state.authenticated = true;
 
+
   state.user = {
+
     id:
       userData.id ||
       userData.email ||
@@ -280,38 +443,121 @@ function setAuthenticatedUser(userData) {
       ),
 
     email:
-      userData.email || '',
+      userData.email ||
+      '',
 
     picture:
-      userData.picture || '',
+      userData.picture ||
+      '',
 
     plan:
-      userData.plan || 'Free Plan',
+      userData.plan ||
+      'Free Plan',
 
     provider:
-      userData.provider || 'email'
+      userData.provider ||
+      'email'
+
   };
+
 
   if (
     userData.preferences &&
     userData.preferences.default_workspace
   ) {
+
     state.activeWorkspace =
       userData.preferences.default_workspace;
+
   }
+
 
   if (
     userData.preferences &&
     userData.preferences.default_mode
   ) {
+
     state.activeMode =
       userData.preferences.default_mode;
+
   }
+
+
+  console.log(
+    '[NEXORA] Authenticated user:',
+    state.user
+  );
+
 }
 
 
 // ============================================================
-// GOOGLE CREDENTIAL RESPONSE
+// SCREEN HELPERS
+// ============================================================
+
+function showLoadingScreen() {
+
+  if (authScreen) {
+
+    authScreen.classList.add('hidden');
+
+  }
+
+
+  if (dashboardScreen) {
+
+    dashboardScreen.classList.add('hidden');
+
+  }
+
+
+  if (authLoadingScreen) {
+
+    authLoadingScreen.classList.remove(
+      'hidden'
+    );
+
+  }
+
+}
+
+
+function showAuthScreen() {
+
+  state.authenticated = false;
+
+
+  if (authLoadingScreen) {
+
+    authLoadingScreen.classList.add(
+      'hidden'
+    );
+
+  }
+
+
+  if (dashboardScreen) {
+
+    dashboardScreen.classList.add(
+      'hidden'
+    );
+
+  }
+
+
+  if (authScreen) {
+
+    authScreen.classList.remove(
+      'hidden'
+    );
+
+  }
+
+}
+
+
+// ============================================================
+// GOOGLE CREDENTIAL LOGIN
 // ============================================================
 
 window.handleGoogleCredentialResponse =
@@ -321,54 +567,83 @@ window.handleGoogleCredentialResponse =
       !response ||
       !response.credential
     ) {
+
+      console.error(
+        '[NEXORA] Google credential missing'
+      );
+
       return;
+
     }
+
 
     try {
 
       showLoadingScreen();
 
-      const res = await fetch(
-        `${API_BASE}/auth/google/token`,
-        {
-          method: 'POST',
 
-          headers: {
-            'Content-Type':
-              'application/json'
-          },
+      const result =
+        await fetch(
+          `${API_BASE}/auth/google/token`,
+          {
+            method: 'POST',
 
-          credentials: 'include',
+            mode: 'cors',
 
-          body: JSON.stringify({
-            credential:
-              response.credential
-          })
-        }
+            credentials: 'include',
+
+            headers: {
+              'Content-Type':
+                'application/json',
+
+              'Accept':
+                'application/json'
+            },
+
+            body: JSON.stringify({
+
+              credential:
+                response.credential
+
+            })
+          }
+        );
+
+
+      const data =
+        await result.json()
+          .catch(() => ({}));
+
+
+      console.log(
+        '[NEXORA] Google token response:',
+        data
       );
 
-      if (res.ok) {
 
-        const data =
-          await res.json();
+      if (
+        result.ok &&
+        data &&
+        data.user
+      ) {
 
-        if (data && data.user) {
+        setAuthenticatedUser(
+          data.user
+        );
 
-          setAuthenticatedUser(
-            data.user
-          );
 
-          await runAuthLoadingSequence();
+        await runAuthLoadingSequence();
 
-          return;
-        }
+
+        return;
+
       }
 
-      alert(
-        'Google authentication could not be completed. Please try again.'
-      );
 
-      showAuthScreen();
+      throw new Error(
+        data.detail ||
+        'Google authentication failed'
+      );
 
     } catch (error) {
 
@@ -377,12 +652,16 @@ window.handleGoogleCredentialResponse =
         error
       );
 
+
       alert(
-        'Google authentication error. Please try again.'
+        'Google authentication failed. Please try again.'
       );
 
+
       showAuthScreen();
+
     }
+
   };
 
 
@@ -390,78 +669,107 @@ window.handleGoogleCredentialResponse =
 // EMAIL LOGIN
 // ============================================================
 
-async function handleEmailLogin(e) {
+async function handleEmailLogin(event) {
 
-  e.preventDefault();
+  event.preventDefault();
+
 
   const email =
-    emailAuthInput.value.trim();
+    emailAuthInput
+      ? emailAuthInput.value.trim()
+      : '';
+
 
   const name =
     nameAuthInput
       ? nameAuthInput.value.trim()
       : '';
 
+
   if (
     !email ||
     !email.includes('@')
   ) {
+
     alert(
       'Please enter a valid email address.'
     );
 
     return;
+
   }
+
 
   showLoadingScreen();
 
+
   try {
 
-    const res = await fetch(
-      `${API_BASE}/auth/email/login`,
-      {
-        method: 'POST',
+    const response =
+      await fetch(
+        `${API_BASE}/auth/email/login`,
+        {
+          method: 'POST',
 
-        headers: {
-          'Content-Type':
-            'application/json'
-        },
+          mode: 'cors',
 
-        credentials: 'include',
+          credentials: 'include',
 
-        body: JSON.stringify({
-          email,
-          name:
-            name || undefined
-        })
-      }
-    );
+          headers: {
+            'Content-Type':
+              'application/json',
 
-    if (res.ok) {
+            'Accept':
+              'application/json'
+          },
 
-      const data =
-        await res.json();
+          body: JSON.stringify({
 
-      if (data && data.user) {
+            email: email,
 
-        setAuthenticatedUser(
-          data.user
-        );
+            name:
+              name || undefined
 
-        await runAuthLoadingSequence();
+          })
+        }
+      );
 
-        return;
-      }
-    }
 
-    const errorData =
-      await res.json()
+    const data =
+      await response.json()
         .catch(() => ({}));
 
+
+    console.log(
+      '[NEXORA] Email login response:',
+      data
+    );
+
+
+    if (
+      response.ok &&
+      data &&
+      data.user
+    ) {
+
+      setAuthenticatedUser(
+        data.user
+      );
+
+
+      await runAuthLoadingSequence();
+
+
+      return;
+
+    }
+
+
     alert(
-      errorData.detail ||
+      data.detail ||
       'Email sign-in failed. Please try again.'
     );
+
 
     showAuthScreen();
 
@@ -472,10 +780,813 @@ async function handleEmailLogin(e) {
       error
     );
 
+
     alert(
       'Network error connecting to Nexora backend.'
     );
 
+
     showAuthScreen();
+
   }
+
+}
+
+
+// ============================================================
+// EMAIL FORM
+// ============================================================
+
+if (emailLoginForm) {
+
+  emailLoginForm.addEventListener(
+    'submit',
+    handleEmailLogin
+  );
+
+}
+// ============================================================
+// GOOGLE OAUTH RETURN HANDLER
+// ============================================================
+
+async function handleOAuthReturn() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const auth =
+    params.get('auth');
+
+  const authError =
+    params.get('auth_error');
+
+
+  console.log(
+    '[NEXORA] OAuth return:',
+    {
+      auth,
+      authError
+    }
+  );
+
+
+  // ----------------------------------------------------------
+  // AUTHENTICATION ERROR
+  // ----------------------------------------------------------
+
+  if (authError) {
+
+    console.error(
+      '[NEXORA] Google authentication error:',
+      authError
+    );
+
+
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
+    );
+
+
+    showAuthScreen();
+
+    return false;
+  }
+
+
+  // ----------------------------------------------------------
+  // GOOGLE LOGIN SUCCESS
+  // ----------------------------------------------------------
+
+  if (auth === 'success') {
+
+    console.log(
+      '[NEXORA] Google OAuth success received'
+    );
+
+
+    showLoadingScreen();
+
+
+    // Remove auth parameters from URL
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
+    );
+
+
+    /*
+     * IMPORTANT
+     *
+     * Google has redirected back from the backend.
+     * Give the browser a moment to process the
+     * session cookie before checking /auth/me.
+     */
+
+    await new Promise(
+      resolve =>
+        setTimeout(resolve, 1000)
+    );
+
+
+    // --------------------------------------------------------
+    // CHECK SESSION
+    // --------------------------------------------------------
+
+    let authenticated = false;
+
+
+    for (
+      let attempt = 1;
+      attempt <= 5;
+      attempt++
+    ) {
+
+      console.log(
+        `[NEXORA] Checking session ${attempt}/5`
+      );
+
+
+      authenticated =
+        await checkSessionAuth();
+
+
+      if (authenticated) {
+
+        console.log(
+          '[NEXORA] Session confirmed!'
+        );
+
+        break;
+      }
+
+
+      await new Promise(
+        resolve =>
+          setTimeout(resolve, 1000)
+      );
+    }
+
+
+    // --------------------------------------------------------
+    // LOGIN SUCCESS
+    // --------------------------------------------------------
+
+    if (authenticated) {
+
+      console.log(
+        '[NEXORA] LOGIN SUCCESS → DASHBOARD'
+      );
+
+
+      await runAuthLoadingSequence();
+
+
+      return true;
+    }
+
+
+    // --------------------------------------------------------
+    // SESSION NOT FOUND
+    // --------------------------------------------------------
+
+    console.error(
+      '[NEXORA] Google login succeeded but backend session was not found.'
+    );
+
+
+    showAuthScreen();
+
+
+    return false;
+  }
+
+
+  return null;
+}
+
+
+// ============================================================
+// AUTH LOADING SEQUENCE
+// ============================================================
+
+async function runAuthLoadingSequence() {
+
+  console.log(
+    '[NEXORA] Running authentication loading sequence...'
+  );
+
+
+  showLoadingScreen();
+
+
+  try {
+
+    /*
+     * Refresh the authenticated user
+     */
+
+    const authenticated =
+      await checkSessionAuth();
+
+
+    if (!authenticated) {
+
+      console.error(
+        '[NEXORA] Authentication session unavailable.'
+      );
+
+
+      showAuthScreen();
+
+      return false;
+    }
+
+
+    // --------------------------------------------------------
+    // LOAD PROFILE
+    // --------------------------------------------------------
+
+    try {
+
+      if (
+        typeof loadUserProfile ===
+        'function'
+      ) {
+
+        await loadUserProfile();
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        '[NEXORA] Profile loading warning:',
+        error
+      );
+
+    }
+
+
+    // --------------------------------------------------------
+    // LOAD WORKSPACES
+    // --------------------------------------------------------
+
+    try {
+
+      if (
+        typeof loadWorkspaces ===
+        'function'
+      ) {
+
+        await loadWorkspaces();
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        '[NEXORA] Workspace loading warning:',
+        error
+      );
+
+    }
+
+
+    // --------------------------------------------------------
+    // LOAD CONVERSATIONS
+    // --------------------------------------------------------
+
+    try {
+
+      if (
+        typeof loadConversations ===
+        'function'
+      ) {
+
+        await loadConversations();
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        '[NEXORA] Conversation loading warning:',
+        error
+      );
+
+    }
+
+
+    // --------------------------------------------------------
+    // LOAD PROMPTS
+    // --------------------------------------------------------
+
+    try {
+
+      if (
+        typeof loadPrompts ===
+        'function'
+      ) {
+
+        await loadPrompts();
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        '[NEXORA] Prompt loading warning:',
+        error
+      );
+
+    }
+
+
+    // --------------------------------------------------------
+    // LOAD TELEMETRY
+    // --------------------------------------------------------
+
+    try {
+
+      if (
+        typeof loadBackendMetrics ===
+        'function'
+      ) {
+
+        await loadBackendMetrics();
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        '[NEXORA] Metrics loading warning:',
+        error
+      );
+
+    }
+
+
+    // --------------------------------------------------------
+    // OPEN DASHBOARD
+    // --------------------------------------------------------
+
+    if (
+      typeof transitionToDashboard ===
+      'function'
+    ) {
+
+      transitionToDashboard();
+
+    } else if (
+      typeof enterDashboardDirectly ===
+      'function'
+    ) {
+
+      await enterDashboardDirectly();
+
+    } else {
+
+      /*
+       * Fallback in case dashboard function
+       * has not been declared yet.
+       */
+
+      if (authScreen) {
+
+        authScreen.classList.add(
+          'hidden'
+        );
+
+      }
+
+
+      if (authLoadingScreen) {
+
+        authLoadingScreen.classList.add(
+          'hidden'
+        );
+
+      }
+
+
+      if (dashboardScreen) {
+
+        dashboardScreen.classList.remove(
+          'hidden'
+        );
+
+      }
+
+    }
+
+
+    console.log(
+      '[NEXORA] Dashboard loaded successfully.'
+    );
+
+
+    return true;
+
+
+  } catch (error) {
+
+    console.error(
+      '[NEXORA] Authentication loading sequence failed:',
+      error
+    );
+
+
+    showAuthScreen();
+
+
+    return false;
+  }
+}
+
+
+// ============================================================
+// DIRECT DASHBOARD ENTRY
+// ============================================================
+
+async function enterDashboardDirectly() {
+
+  console.log(
+    '[NEXORA] Entering dashboard directly...'
+  );
+
+
+  showLoadingScreen();
+
+
+  try {
+
+    if (
+      typeof loadUserProfile ===
+      'function'
+    ) {
+
+      await loadUserProfile();
+
+    }
+
+
+    if (
+      typeof loadWorkspaces ===
+      'function'
+    ) {
+
+      await loadWorkspaces();
+
+    }
+
+
+    if (
+      typeof loadConversations ===
+      'function'
+    ) {
+
+      await loadConversations();
+
+    }
+
+
+    if (
+      typeof loadPrompts ===
+      'function'
+    ) {
+
+      await loadPrompts();
+
+    }
+
+
+    if (
+      typeof loadBackendMetrics ===
+      'function'
+    ) {
+
+      await loadBackendMetrics();
+
+    }
+
+
+    if (
+      typeof transitionToDashboard ===
+      'function'
+    ) {
+
+      transitionToDashboard();
+
+    } else {
+
+      if (authScreen) {
+
+        authScreen.classList.add(
+          'hidden'
+        );
+
+      }
+
+
+      if (authLoadingScreen) {
+
+        authLoadingScreen.classList.add(
+          'hidden'
+        );
+
+      }
+
+
+      if (dashboardScreen) {
+
+        dashboardScreen.classList.remove(
+          'hidden'
+        );
+
+      }
+
+    }
+
+
+  } catch (error) {
+
+    console.error(
+      '[NEXORA] Dashboard initialization failed:',
+      error
+    );
+
+
+    /*
+     * Even if optional dashboard data fails,
+     * don't send an authenticated user back
+     * to the login page.
+     */
+
+    if (authScreen) {
+
+      authScreen.classList.add(
+        'hidden'
+      );
+
+    }
+
+
+    if (authLoadingScreen) {
+
+      authLoadingScreen.classList.add(
+        'hidden'
+      );
+
+    }
+
+
+    if (dashboardScreen) {
+
+      dashboardScreen.classList.remove(
+        'hidden'
+      );
+
+    }
+
+  }
+}
+
+
+// ============================================================
+// LOGOUT
+// ============================================================
+
+async function logoutNexora() {
+
+  try {
+
+    await fetch(
+      `${API_BASE}/auth/logout`,
+      {
+        method: 'POST',
+
+        credentials: 'include',
+
+        mode: 'cors'
+      }
+    );
+
+  } catch (error) {
+
+    console.warn(
+      '[NEXORA] Logout request failed:',
+      error
+    );
+
+  }
+
+
+  state.authenticated = false;
+
+
+  state.user = {
+
+    id: 'default_user',
+
+    name: 'User',
+
+    first_name: 'User',
+
+    email: '',
+
+    picture: '',
+
+    plan: 'Free Plan',
+
+    provider: 'email'
+
+  };
+
+
+  state.activeConversationId =
+    null;
+
+  state.activeConversationTitle =
+    null;
+
+
+  showAuthScreen();
+
+
+  console.log(
+    '[NEXORA] Logged out'
+  );
+}
+
+
+// ============================================================
+// LOGOUT BUTTON SUPPORT
+// ============================================================
+
+document.addEventListener(
+  'click',
+  function (event) {
+
+    const logoutButton =
+      event.target.closest(
+        '#btnLogout, #logoutBtn, [data-action="logout"]'
+      );
+
+
+    if (!logoutButton) {
+
+      return;
+
+    }
+
+
+    event.preventDefault();
+
+
+    logoutNexora();
+
+  }
+);
+
+
+// ============================================================
+// APPLICATION STARTUP
+// ============================================================
+
+async function startNexora() {
+
+  console.log(
+    '=========================================='
+  );
+
+  console.log(
+    '[NEXORA] Starting application'
+  );
+
+  console.log(
+    '=========================================='
+  );
+
+
+  showLoadingScreen();
+
+
+  // ----------------------------------------------------------
+  // INITIALIZE GOOGLE CONFIG
+  // ----------------------------------------------------------
+
+  await initGoogleGsiConfig();
+
+
+  // ----------------------------------------------------------
+  // READ URL PARAMETERS
+  // ----------------------------------------------------------
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const authSuccess =
+    params.get('auth') === 'success';
+
+  const authError =
+    params.get('auth_error');
+
+
+  // ----------------------------------------------------------
+  // HANDLE GOOGLE AUTH RETURN FIRST
+  // ----------------------------------------------------------
+
+  if (
+    authSuccess ||
+    authError
+  ) {
+
+    const result =
+      await handleOAuthReturn();
+
+
+    if (result === true) {
+
+      return;
+
+    }
+
+
+    if (result === false) {
+
+      return;
+
+    }
+
+  }
+
+
+  // ----------------------------------------------------------
+  // NORMAL PAGE LOAD
+  // ----------------------------------------------------------
+
+  console.log(
+    '[NEXORA] Checking existing session...'
+  );
+
+
+  const authenticated =
+    await checkSessionAuth();
+
+
+  if (authenticated) {
+
+    console.log(
+      '[NEXORA] Existing authenticated session found.'
+    );
+
+
+    await enterDashboardDirectly();
+
+
+    return;
+  }
+
+
+  // ----------------------------------------------------------
+  // NO SESSION
+  // ----------------------------------------------------------
+
+  console.log(
+    '[NEXORA] No active session.'
+  );
+
+
+  showAuthScreen();
+
+}
+
+
+// ============================================================
+// START WHEN DOM IS READY
+// ============================================================
+
+if (
+  document.readyState ===
+  'loading'
+) {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    startNexora
+  );
+
+} else {
+
+  startNexora();
+
 }
