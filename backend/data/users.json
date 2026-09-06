@@ -63,6 +63,22 @@
         "theme": "light",
         "default_mode": "auto"
       }
+    },
+    "usr_3e8c0dd9f7": {
+      "id": "usr_3e8c0dd9f7",
+      "email": "mounika@example.com",
+      "name": "Mounika P",
+      "first_name": "Mounika",
+      "picture": "",
+      "provider": "email",
+      "plan": "Free Plan",
+      "created_at": 1788682982.6039786,
+      "last_login": 1788684276.326163,
+      "preferences": {
+        "default_workspace": "Personal",
+        "theme": "light",
+        "default_mode": "auto"
+      }
     }
   }
 }

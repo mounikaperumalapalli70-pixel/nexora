@@ -755,6 +755,457 @@
           "is_configuration_error": false
         }
       ]
+    },
+    "conv_120f142f275c": {
+      "id": "conv_120f142f275c",
+      "user_id": "103601034276798737930",
+      "workspace_id": "Personal",
+      "title": "hi",
+      "created_at": 1788663848.9142911,
+      "updated_at": 1788663872.060577,
+      "messages": [
+        {
+          "id": "msg_1d17ca41",
+          "role": "user",
+          "content": "hi",
+          "timestamp": 1788663872.0300703
+        },
+        {
+          "id": "msg_293e972a",
+          "role": "assistant",
+          "content": "Hello! How can I assist you today? 😊",
+          "timestamp": 1788663872.060577,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 48,
+            "output": 79,
+            "total": 127
+          },
+          "cost": 2.1e-05,
+          "baseline_cost": 0.001425,
+          "savings": 0.001404,
+          "latency_ms": 23121.04,
+          "quality_score": 92.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_953cd23ebdf9": {
+      "id": "conv_953cd23ebdf9",
+      "user_id": "103601034276798737930",
+      "workspace_id": "Personal",
+      "title": "is mounika female or male",
+      "created_at": 1788664292.6928146,
+      "updated_at": 1788664335.3907928,
+      "messages": [
+        {
+          "id": "msg_65628cd1",
+          "role": "user",
+          "content": "is mounika female or male",
+          "timestamp": 1788664335.363359
+        },
+        {
+          "id": "msg_ce182964",
+          "role": "assistant",
+          "content": "Mounika is a female name, commonly associated with Indian culture. It is typically used for girls and is considered a beautiful, elegant name. While names can sometimes be used for both genders, Mounika is predominantly linked to females.",
+          "timestamp": 1788664335.3907928,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 54,
+            "output": 199,
+            "total": 253
+          },
+          "cost": 4.5e-05,
+          "baseline_cost": 0.003255,
+          "savings": 0.00321,
+          "latency_ms": 42670.48,
+          "quality_score": 97.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_e8349bd1fdfd": {
+      "id": "conv_e8349bd1fdfd",
+      "user_id": "103601034276798737930",
+      "workspace_id": "Personal",
+      "title": "hello",
+      "created_at": 1788664728.9389346,
+      "updated_at": 1788664750.6192427,
+      "messages": [
+        {
+          "id": "msg_71531394",
+          "role": "user",
+          "content": "hello",
+          "timestamp": 1788664750.5949469
+        },
+        {
+          "id": "msg_35137a5f",
+          "role": "assistant",
+          "content": "Hello! How can I assist you today? 😊",
+          "timestamp": 1788664750.6192427,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 48,
+            "output": 72,
+            "total": 120
+          },
+          "cost": 1.9e-05,
+          "baseline_cost": 0.00132,
+          "savings": 0.001301,
+          "latency_ms": 21656.72,
+          "quality_score": 92.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": false
+        }
+      ]
+    },
+    "conv_397de36ab468": {
+      "id": "conv_397de36ab468",
+      "user_id": "103601034276798737930",
+      "workspace_id": "Personal",
+      "title": "i want the informationabout quantum fo...",
+      "created_at": 1788664779.4860988,
+      "updated_at": 1788664825.148286,
+      "messages": [
+        {
+          "id": "msg_7488e00e",
+          "role": "user",
+          "content": "i want the informationabout quantum for building a project",
+          "timestamp": 1788664825.1028235
+        },
+        {
+          "id": "msg_126a4d71",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788664825.148286,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 15,
+            "output": 57,
+            "total": 72
+          },
+          "cost": 1.3e-05,
+          "baseline_cost": 0.00093,
+          "savings": 0.000917,
+          "latency_ms": 45614.11,
+          "quality_score": 99.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true
+        }
+      ]
+    },
+    "conv_1a238949c381": {
+      "id": "conv_1a238949c381",
+      "user_id": "usr_3e8c0dd9f7",
+      "workspace_id": "Research",
+      "title": "What is quantum annealing used for acc...",
+      "created_at": 1788682982.6574683,
+      "updated_at": 1788683028.2585151,
+      "messages": [
+        {
+          "id": "msg_67390129",
+          "role": "user",
+          "content": "What is quantum annealing used for according to the indexed documents?",
+          "timestamp": 1788683028.227676
+        },
+        {
+          "id": "msg_d4ae6c45",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788683028.2585151,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 18,
+            "output": 57,
+            "total": 75
+          },
+          "cost": 1.3e-05,
+          "baseline_cost": 0.000945,
+          "savings": 0.000932,
+          "latency_ms": 45570.14,
+          "quality_score": 99.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true,
+          "rag_used": true,
+          "rag_chunks": [
+            {
+              "chunk_id": "doc_6d6efb714a_c0",
+              "doc_id": "doc_6d6efb714a",
+              "document_name": "quantum_computing_overview.txt",
+              "workspace_id": "Research",
+              "text": "Quantum Annealing and Adiabatic Quantum Computing Overview:\nQuantum annealing is an optimization process for finding the global minimum of a given objective function\nover a given set of candidate states, by using quantum fluctuations.\nD-Wave Systems developed commercial quantum annealers featuring over 5000 superconducting qubits.\nThe primary advantage is solving combinatorial optimization problems in logistics, finance, and drug discovery\nsignificantly faster than classical simulated annealing.",
+              "score": 0.3865,
+              "index": 0
+            }
+          ]
+        }
+      ]
+    },
+    "conv_07b54b56ccdd": {
+      "id": "conv_07b54b56ccdd",
+      "user_id": "usr_3e8c0dd9f7",
+      "workspace_id": "Personal",
+      "title": "Hi",
+      "created_at": 1788683028.3051257,
+      "updated_at": 1788683037.2654731,
+      "messages": [
+        {
+          "id": "msg_bf90dfae",
+          "role": "user",
+          "content": "Hi",
+          "timestamp": 1788683037.2410126
+        },
+        {
+          "id": "msg_a0a60128",
+          "role": "assistant",
+          "content": "Hello! How can I assist you today? 😊",
+          "timestamp": 1788683037.2654731,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "qwen3:1.7b",
+          "provider": "Ollama (Local Engine)",
+          "tier": "cheap",
+          "tokens": {
+            "input": 49,
+            "output": 79,
+            "total": 128
+          },
+          "cost": 2.1e-05,
+          "baseline_cost": 0.00143,
+          "savings": 0.001409,
+          "latency_ms": 8936.05,
+          "quality_score": 92.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": false,
+          "rag_used": false,
+          "rag_chunks": []
+        }
+      ]
+    },
+    "conv_6c5c8f145ab9": {
+      "id": "conv_6c5c8f145ab9",
+      "user_id": "usr_3e8c0dd9f7",
+      "workspace_id": "Hackathons",
+      "title": "Write a distributed consensus engine i...",
+      "created_at": 1788683037.2999504,
+      "updated_at": 1788683083.1391747,
+      "messages": [
+        {
+          "id": "msg_695da8f2",
+          "role": "user",
+          "content": "Write a distributed consensus engine in Rust implementing Raft leader election with state machine replication and log compaction.",
+          "timestamp": 1788683083.0957985
+        },
+        {
+          "id": "msg_5044b825",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788683083.1391747,
+          "model": "GPT-4 / Claude (PRO)",
+          "selected_model": "GPT-4 / Claude (POWERFUL)",
+          "provider": "Neural Engine",
+          "tier": "powerful",
+          "tokens": {
+            "input": 33,
+            "output": 57,
+            "total": 90
+          },
+          "cost": 0.00102,
+          "baseline_cost": 0.00102,
+          "savings": 0.0,
+          "latency_ms": 45794.43,
+          "quality_score": 99.0,
+          "difficulty": "hard",
+          "reason": "Complex multi-step system design and architecture",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true,
+          "rag_used": false,
+          "rag_chunks": []
+        }
+      ]
+    },
+    "conv_b12a31458ffc": {
+      "id": "conv_b12a31458ffc",
+      "user_id": "usr_3e8c0dd9f7",
+      "workspace_id": "Research",
+      "title": "What is quantum annealing used for acc...",
+      "created_at": 1788684276.374382,
+      "updated_at": 1788684321.9159756,
+      "messages": [
+        {
+          "id": "msg_d449d85b",
+          "role": "user",
+          "content": "What is quantum annealing used for according to the indexed documents?",
+          "timestamp": 1788684321.8818212
+        },
+        {
+          "id": "msg_b43d1a3d",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788684321.9159756,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "Neural Engine",
+          "tier": "cheap",
+          "tokens": {
+            "input": 18,
+            "output": 57,
+            "total": 75
+          },
+          "cost": 1.3e-05,
+          "baseline_cost": 0.000945,
+          "savings": 0.000932,
+          "latency_ms": 45505.91,
+          "quality_score": 99.0,
+          "difficulty": "easy",
+          "reason": "Simple factual or educational query",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true,
+          "rag_used": true,
+          "rag_chunks": [
+            {
+              "chunk_id": "doc_6d6efb714a_c0",
+              "doc_id": "doc_6d6efb714a",
+              "document_name": "quantum_computing_overview.txt",
+              "workspace_id": "Research",
+              "text": "Quantum Annealing and Adiabatic Quantum Computing Overview:\nQuantum annealing is an optimization process for finding the global minimum of a given objective function\nover a given set of candidate states, by using quantum fluctuations.\nD-Wave Systems developed commercial quantum annealers featuring over 5000 superconducting qubits.\nThe primary advantage is solving combinatorial optimization problems in logistics, finance, and drug discovery\nsignificantly faster than classical simulated annealing.",
+              "score": 0.3045,
+              "index": 0
+            },
+            {
+              "chunk_id": "doc_32cfd0e80d_c0",
+              "doc_id": "doc_32cfd0e80d",
+              "document_name": "quantum_computing_overview.txt",
+              "workspace_id": "Research",
+              "text": "Quantum Annealing and Adiabatic Quantum Computing Overview:\nQuantum annealing is an optimization process for finding the global minimum of a given objective function\nover a given set of candidate states, by using quantum fluctuations.\nD-Wave Systems developed commercial quantum annealers featuring over 5000 superconducting qubits.\nThe primary advantage is solving combinatorial optimization problems in logistics, finance, and drug discovery\nsignificantly faster than classical simulated annealing.",
+              "score": 0.3045,
+              "index": 0
+            }
+          ]
+        }
+      ]
+    },
+    "conv_3f388b12bf9e": {
+      "id": "conv_3f388b12bf9e",
+      "user_id": "usr_3e8c0dd9f7",
+      "workspace_id": "Personal",
+      "title": "Hi",
+      "created_at": 1788684321.9663272,
+      "updated_at": 1788684322.0652447,
+      "messages": [
+        {
+          "id": "msg_f78353ed",
+          "role": "user",
+          "content": "Hi",
+          "timestamp": 1788684322.0213106
+        },
+        {
+          "id": "msg_bc65335c",
+          "role": "assistant",
+          "content": "Hello! How can I assist you today? 😊",
+          "timestamp": 1788684322.0652447,
+          "model": "Haiku / Small (FAST)",
+          "selected_model": "Haiku / Small (CHEAP)",
+          "provider": "NEXORA Cache",
+          "tier": "cheap",
+          "tokens": {
+            "input": 1,
+            "output": 9,
+            "total": 10
+          },
+          "cost": 0.0,
+          "baseline_cost": 0.00014,
+          "savings": 0.00014,
+          "latency_ms": 54.14,
+          "quality_score": 92.0,
+          "difficulty": "easy",
+          "reason": "Short direct query with low compute requirements",
+          "cache_hit": true,
+          "mode": "auto",
+          "is_configuration_error": false,
+          "rag_used": false,
+          "rag_chunks": []
+        }
+      ]
+    },
+    "conv_f8c7e9f5a45d": {
+      "id": "conv_f8c7e9f5a45d",
+      "user_id": "usr_3e8c0dd9f7",
+      "workspace_id": "Hackathons",
+      "title": "Write a distributed consensus engine i...",
+      "created_at": 1788684322.1106777,
+      "updated_at": 1788684367.6686492,
+      "messages": [
+        {
+          "id": "msg_b9b2f09b",
+          "role": "user",
+          "content": "Write a distributed consensus engine in Rust implementing Raft leader election with state machine replication and log compaction.",
+          "timestamp": 1788684367.6281364
+        },
+        {
+          "id": "msg_753bbee0",
+          "role": "assistant",
+          "content": "AI provider isn't configured yet.\n\nConnect an AI provider in **Settings → AI Providers** to start generating responses.\n\n<details><summary>🔍 Technical details</summary>\n\n```\nOpenRouter (HTTP 401 - User not found.)\n```\n</details>",
+          "timestamp": 1788684367.6686492,
+          "model": "GPT-4 / Claude (PRO)",
+          "selected_model": "GPT-4 / Claude (POWERFUL)",
+          "provider": "Neural Engine",
+          "tier": "powerful",
+          "tokens": {
+            "input": 33,
+            "output": 57,
+            "total": 90
+          },
+          "cost": 0.00102,
+          "baseline_cost": 0.00102,
+          "savings": 0.0,
+          "latency_ms": 45516.78,
+          "quality_score": 99.0,
+          "difficulty": "hard",
+          "reason": "Complex multi-step system design and architecture",
+          "cache_hit": false,
+          "mode": "auto",
+          "is_configuration_error": true,
+          "rag_used": false,
+          "rag_chunks": []
+        }
+      ]
     }
   }
 }

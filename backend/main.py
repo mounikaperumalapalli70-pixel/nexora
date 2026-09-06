@@ -4,7 +4,7 @@ import time
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request, Query, HTTPException
+from fastapi import FastAPI, Request, Query, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from starlette.middleware.sessions import SessionMiddleware
@@ -44,6 +44,7 @@ from services.conversation_store import (
 from services.user_store import get_or_create_user, get_user, update_user_profile
 from services.workspace_store import list_workspaces, create_workspace, delete_workspace
 from services.prompt_store import list_prompts, create_prompt, update_prompt, delete_prompt
+from services.rag_service import rag_engine
 from auth import router as auth_router
 
 app = FastAPI(
@@ -425,13 +426,37 @@ def chat(request: ChatRequest, req: Request):
 
     else:
         cache_hit = False
-
         system_prompt = (
-            "You are NEXORA AI, an intelligent, helpful, and concise AI optimization assistant. "
-            "Respond directly, clearly, and insightfully to the user's queries."
+            "You are NEXORA, an intelligent AI Optimization Engine designed to provide concise, "
+            "accurate, and high-impact answers. Always maintain clarity, depth, and precision."
         )
+
+        # RAG Knowledge Base Retrieval
+        rag_chunks = []
         if request.context:
+            rag_chunks.append({
+                "chunk_id": "direct_context",
+                "document_name": "Attached Document",
+                "text": request.context[:1500],
+                "score": 1.0,
+                "index": 0
+            })
             system_prompt += f"\n\n[Uploaded Document / Attached Context]:\n{request.context}"
+        else:
+            try:
+                retrieved = rag_engine.search(
+                    query=request.message,
+                    workspace_id=workspace_id,
+                    top_k=4,
+                    min_score=0.04
+                )
+                if retrieved:
+                    rag_chunks = retrieved
+                    rag_formatted = rag_engine.format_rag_context(retrieved)
+                    system_prompt += f"\n\n{rag_formatted}"
+            except Exception as e:
+                print(f"[NEXORA RAG] Search error: {e}")
+
         if request.use_search:
             try:
                 from services.search_service import search_ddg
@@ -511,7 +536,9 @@ def chat(request: ChatRequest, req: Request):
         "reason": reason,
         "cache_hit": cache_hit,
         "mode": mode,
-        "is_configuration_error": is_config_error
+        "is_configuration_error": is_config_error,
+        "rag_used": len(rag_chunks) > 0 if "rag_chunks" in locals() else False,
+        "rag_chunks": rag_chunks if "rag_chunks" in locals() else []
     }
 
     assistant_msg_entry = add_message(
@@ -568,7 +595,102 @@ def chat(request: ChatRequest, req: Request):
         },
         "latency_ms": latency_ms,
         "quality_score": quality_data.get("score", 95.0),
-        "workspace_id": workspace_id
+        "workspace_id": workspace_id,
+        "rag_used": len(rag_chunks) > 0 if "rag_chunks" in locals() else False,
+        "rag_chunks": rag_chunks if "rag_chunks" in locals() else []
+    }
+
+
+# ============================================================
+# RAG (Retrieval-Augmented Generation) API Endpoints
+# ============================================================
+
+class RAGQueryPayload(BaseModel):
+    query: str
+    workspace_id: Optional[str] = "Personal"
+    top_k: Optional[int] = 4
+
+
+@app.post("/api/rag/upload")
+@app.post("/rag/upload")
+async def upload_rag_document(
+    file: UploadFile = File(...),
+    workspace_id: str = Form("Personal"),
+    req: Request = None
+):
+    """
+    RAG Upload Endpoint:
+    Accepts PDF, TXT, DOCX, Markdown, etc., extracts text, creates semantic chunks,
+    generates TF-IDF vector embeddings, and indexes into workspace knowledge base.
+    """
+    user_id = _get_user_id_from_request(req) if req else "default_user"
+    content_bytes = await file.read()
+    if not content_bytes:
+        raise HTTPException(status_code=400, detail="Uploaded file is empty.")
+
+    try:
+        doc_meta = rag_engine.add_document(
+            content_bytes=content_bytes,
+            filename=file.filename or "uploaded_document",
+            workspace_id=workspace_id,
+            user_id=user_id
+        )
+        return {
+            "status": "success",
+            "message": f"Successfully indexed '{file.filename}' ({doc_meta['chunk_count']} chunks) into '{workspace_id}' knowledge base.",
+            "document": doc_meta
+        }
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Failed to process document: {str(e)}")
+
+
+@app.get("/api/rag/documents")
+@app.get("/rag/documents")
+def list_rag_documents(
+    workspace_id: Optional[str] = Query(None),
+    req: Request = None
+):
+    """
+    Returns list of indexed documents in the active workspace knowledge base.
+    """
+    user_id = _get_user_id_from_request(req) if req else "default_user"
+    docs = rag_engine.list_documents(workspace_id=workspace_id, user_id=user_id)
+    return {
+        "status": "success",
+        "documents": docs,
+        "count": len(docs)
+    }
+
+
+@app.delete("/api/rag/documents/{doc_id}")
+@app.delete("/rag/documents/{doc_id}")
+def delete_rag_document(doc_id: str):
+    """
+    Deletes a document and all its chunks from the RAG knowledge base.
+    """
+    success = rag_engine.delete_document(doc_id)
+    if success:
+        return {"status": "success", "message": f"Document '{doc_id}' deleted."}
+    raise HTTPException(status_code=404, detail="Document not found.")
+
+
+@app.post("/api/rag/query")
+@app.post("/rag/query")
+def query_rag_knowledge(payload: RAGQueryPayload):
+    """
+    Direct RAG similarity search endpoint. Returns top matching text chunks with relevance scores.
+    """
+    chunks = rag_engine.search(
+        query=payload.query,
+        workspace_id=payload.workspace_id,
+        top_k=payload.top_k or 4
+    )
+    return {
+        "status": "success",
+        "query": payload.query,
+        "count": len(chunks),
+        "chunks": chunks,
+        "context": rag_engine.format_rag_context(chunks)
     }
 
 
