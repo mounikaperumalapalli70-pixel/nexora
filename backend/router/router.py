@@ -5,7 +5,7 @@ Routes queries to the cheapest suitable model based on classified difficulty.
 
 MODEL_CONFIG = {
     "easy": {
-        "model": "qwen/qwen3-32b:free",
+        "model": "google/gemma-4-26b-a4b-it:free",
         "name": "Haiku / Small (CHEAP)",
         "tier": "CHEAP",
         "description": "Ultra-low cost model for direct answers, definitions & simple facts",
