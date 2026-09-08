@@ -5,7 +5,7 @@ Routes queries to the cheapest suitable model based on classified difficulty.
 
 MODEL_CONFIG = {
     "easy": {
-        "model": "openrouter/free",
+        "model": "minimax/minimax-m3:free",
         "name": "Haiku / Small (CHEAP)",
         "tier": "CHEAP",
         "description": "Ultra-low cost model for direct answers, definitions & simple facts",
