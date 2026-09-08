@@ -5,7 +5,7 @@ Routes queries to the cheapest suitable model based on classified difficulty.
 
 MODEL_CONFIG = {
     "easy": {
-        "model": "minimax/minimax-m3:free",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
         "name": "Haiku / Small (CHEAP)",
         "tier": "CHEAP",
         "description": "Ultra-low cost model for direct answers, definitions & simple facts",
